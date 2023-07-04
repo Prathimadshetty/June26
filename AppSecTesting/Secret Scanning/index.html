@@ -1251,26 +1251,31 @@
 <p>--fail-verified- Only emit failure code for verified findings.</p>
 <p>TruffleHog will return a non-zero exit code if there are findings.</p>
 <h3 id="azure-devops-pipeline-integration">Azure DevOps pipeline Integration</h3>
-<p>trigger:
-- 'develop'</p>
-<p>pool:
-  vmImage: ubuntu-latest</p>
-<p>steps:
+<div class="language-text highlight"><pre><span></span><code>trigger:
+- &#39;develop&#39;
+
+
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
   - task: Bash@3
     inputs:
-      targetType: 'inline'
+      targetType: &#39;inline&#39;
       script: |
-        curl -q "https://storage.googleapis.com/thog-releases/trufflehog-scanner/latest/fetch.sh" | bash
+        curl -q &quot;https://storage.googleapis.com/thog-releases/trufflehog-scanner/latest/fetch.sh&quot; | bash
                 ./trufflehog --fail-verified git
                  status=$?
                   echo $status
                  if [ $status -eq 1 ]
                 then
-                 curl -H 'Content-Type: application/json' -d ' {"text":  "Trufflehog Scan for the (ApplicationName) has secrets"  }' $(WEBHOOK)
+                 curl -H &#39;Content-Type: application/json&#39; -d &#39; {&quot;text&quot;:  &quot;Trufflehog Scan for the (ApplicationName) has secrets&quot;  }&#39; $(WEBHOOK)
                 else
-                 echo "Your application has no secrets"
-                fi</p>
-<div class="language-text highlight"><pre><span></span><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
+                 echo &quot;Your application has no secrets&quot;
+                fi
+
+Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
 </code></pre></div>
 <h3 id="github-actions-pipeline-integration-">Github Actions pipeline Integration-</h3>
 <p>steps:
