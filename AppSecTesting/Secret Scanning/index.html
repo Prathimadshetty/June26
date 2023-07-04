@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#application-security" class="md-skip">
+        <a href="#secret-scanning" class="md-skip">
           Skip to content
         </a>
       
@@ -816,8 +816,6 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Secret Scanning
@@ -834,8 +832,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -844,37 +840,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
-    Purpose
+  <a href="#secret-scanning" class="md-nav__link">
+    Secret scanning
+  </a>
+  
+    <nav class="md-nav" aria-label="Secret scanning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-integrate" class="md-nav__link">
+    How to integrate?
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#audience" class="md-nav__link">
-    Audience
+        
+          <li class="md-nav__item">
+  <a href="#azure-devops-pipeline-integration" class="md-nav__link">
+    Azure DevOps pipeline Integration
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
-    Objectives
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#triggers" class="md-nav__link">
-    Triggers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#capabilities" class="md-nav__link">
-    Capabilities
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1169,8 +1157,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1179,37 +1165,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#purpose" class="md-nav__link">
-    Purpose
+  <a href="#secret-scanning" class="md-nav__link">
+    Secret scanning
+  </a>
+  
+    <nav class="md-nav" aria-label="Secret scanning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-integrate" class="md-nav__link">
+    How to integrate?
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#audience" class="md-nav__link">
-    Audience
+        
+          <li class="md-nav__item">
+  <a href="#azure-devops-pipeline-integration" class="md-nav__link">
+    Azure DevOps pipeline Integration
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#objectives" class="md-nav__link">
-    Objectives
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#triggers" class="md-nav__link">
-    Triggers
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#capabilities" class="md-nav__link">
-    Capabilities
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1228,36 +1206,44 @@
                   
 
 
-<h1 id="application-security">Application Security</h1>
-<p>Welcome to Application Security Services and guidelines</p>
-<h2 id="purpose">Purpose</h2>
-<p>Help engineering teams to build and operate more secure systems by incorporating Secuirty into their SDLC.</p>
-<h2 id="audience">Audience</h2>
-<p>Software Engineering Teams at M&amp;S.</p>
-<h2 id="objectives">Objectives</h2>
-<ul>
-<li>Reduce the vulnerabilities in M&amp;S applications by creating security automation,        collaborating with teams, creating and aiding with SSDLC standards</li>
-<li>Provide product health metrics and dashboards</li>
-<li>Strengthen application security through CI/CD using tooling, quality gates</li>
-<li>Engaging with engineering communities through their SLDC journey by providing Threat Modeling, workshops, Vulnerability Assessments, Remediation support.</li>
-</ul>
-<h2 id="triggers">Triggers</h2>
-<ul>
-<li>When new applications are being onboarded via Ecosystem builder</li>
-<li>When In-Scope pull requests, repository and central software repo commits are made</li>
-<li>When security design reviews are performed</li>
-<li>When collaborative orchestra action items are raised</li>
-<li>When requests are raised via Zerodai or other channels</li>
-<li>Threat modelling during feature planning and design reviews</li>
-<li>When software vulnerabilities are identified</li>
-</ul>
-<h2 id="capabilities">Capabilities</h2>
-<ul>
-<li>Threat Modeling</li>
-<li>Security testing </li>
-<li>CI/CD security and tooling - SAST,SCA,Secret Scanning and DAST</li>
-<li>Vulnerability remediation</li>
-</ul>
+  <h1>Secret Scanning</h1>
+
+<h2 id="secret-scanning">Secret scanning</h2>
+<p>We can use TruffleHog in CI to prevent secrets from being merged in Git. This document explains how to integrate Trufflehog in DevOps pipeline in CI.</p>
+<p>At M&amp;S we use Trufflehog for scanning the repos for finding hardcoded secrets. </p>
+<h3 id="how-to-integrate">How to integrate?</h3>
+<p>General approach : Platform independent CI integration-</p>
+<p>Option 1: Trufflehog Binary(Enterprise Scan)(Recommended)</p>
+<p>You can run Trufflehog Enterprise Scan with Trufflehog Binary using the below command-</p>
+<pre><code>"curl -q "https://storage.googleapis.com/thog-releases/trufflehog-scanner/latest/fetch.sh" | bash
+            ./trufflehog --fail-verified git"
+</code></pre>
+<p>curl command will fetch the Trufflehog scanner latest version for installation </p>
+<p>./trufflehog – does the actual scanning</p>
+<p>--fail-verified- Only emit failure code for verified findings.</p>
+<p>TruffleHog will return a non-zero exit code if there are findings.</p>
+<h3 id="azure-devops-pipeline-integration">Azure DevOps pipeline Integration</h3>
+<p>trigger:
+- 'develop'</p>
+<p>pool:
+  vmImage: ubuntu-latest</p>
+<p>steps:
+  - task: Bash@3
+    inputs:
+      targetType: 'inline'
+      script: |
+        curl -q "https://storage.googleapis.com/thog-releases/trufflehog-scanner/latest/fetch.sh" | bash
+                ./trufflehog --fail-verified git
+                 status=$?
+                  echo $status
+                 if [ $status -eq 1 ]
+                then
+                 curl -H 'Content-Type: application/json' -d ' {"text":  "Trufflehog Scan for the (ApplicationName) has secrets"  }' $(WEBHOOK)
+                else
+                 echo "Your application has no secrets"
+                fi</p>
+<pre><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
+</code></pre>
 
 
 
