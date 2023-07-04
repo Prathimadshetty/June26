@@ -902,6 +902,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fortify-security-assistant-plugin-for-intellij-and-android-studio" class="md-nav__link">
+    Fortify Security Assistant Plugin for IntelliJ and Android Studio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-configure-fortify-security-assistant" class="md-nav__link">
+    To configure Fortify Security Assistant:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-review-the-security-issues_2" class="md-nav__link">
+    To review the security issues:
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1240,6 +1261,27 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#fortify-security-assistant-plugin-for-intellij-and-android-studio" class="md-nav__link">
+    Fortify Security Assistant Plugin for IntelliJ and Android Studio
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-configure-fortify-security-assistant" class="md-nav__link">
+    To configure Fortify Security Assistant:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-review-the-security-issues_2" class="md-nav__link">
+    To review the security issues:
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1340,6 +1382,102 @@ The first time you install the extension, you are prompted to provide a license 
 <p>You can also analyze a solution and identify security issues. You cannot make any code changes during the analysis.</p>
 <p>To scan a solution for issues:</p>
 <p>From the Fortify Security Assistant extension menu, select Analyze Solution as shown below</p>
+<p>IMAGE</p>
+<h3 id="fortify-security-assistant-plugin-for-intellij-and-android-studio">Fortify Security Assistant Plugin for IntelliJ and Android Studio</h3>
+<p>Requirements -</p>
+<p>a. A valid license file from Fortify- M&amp;S authorized users can download the license file from the below fortify portal-</p>
+<p>https://emea.fortify.com/Tools/Downloads</p>
+<p>IMAGE</p>
+<p>You can install Fortify Security Assistant on Windows, Linux, and macOS. The Fortify Security Assistant plugin is available for download from the JetBrains Marketplace.</p>
+<p>To install Fortify Security Assistant:</p>
+<ol>
+<li>Start IntelliJ IDEA or Android Studio.</li>
+<li>
+<p>Open the Settings dialog box as follows:</p>
+</li>
+<li>
+<p>On Windows or Linux, select File &gt; Settings.</p>
+</li>
+<li>
+<p>On macOS, select <IDE_name> &gt; Preferences.</p>
+</li>
+<li>
+<p>On the left pane, select Plugins.</p>
+</li>
+<li>Select the Marketplace tab, and then in the search box type Fortify Security Assistant.</li>
+<li>Click Install.</li>
+<li>Click OK.</li>
+</ol>
+<h3 id="to-configure-fortify-security-assistant">To configure Fortify Security Assistant:</h3>
+<ol>
+<li>Open the Settings dialog box as follows:</li>
+</ol>
+<p>On Windows or Linux, select File &gt; Settings.</p>
+<p>On macOS, select <IDE_name> &gt; Preferences.</p>
+<ol>
+<li>
+<p>In the search box, type fortify.</p>
+</li>
+<li>
+<p>Select Fortify Security Assistant in the left pane.</p>
+</li>
+</ol>
+<p>IMAGE</p>
+<ol>
+<li>To specify the license file, click Browse to the right of the License file box and navigate to the license file (fortify.license) on your system.</li>
+<li>To load or update Fortify security content stored locally:</li>
+</ol>
+<p>Select Use local Rulepack.</p>
+<p>Click Browse next to the Folder box and navigate to a folder on your system that contains the Rulepacks.</p>
+<p>The selected folder must contain Rulepacks as ZIP, XML, or BIN files.</p>
+<p>Click Load Security Content.</p>
+<ol>
+<li>
+<p>To download Fortify security content from a Rulepack update server or from Fortify Software Security Center:</p>
+</li>
+<li>
+<p>Select Use security content server.</p>
+</li>
+<li>
+<p>To download security content from the Fortify Rulepack update server, in the URL box, type a Rulepack server URL.</p>
+</li>
+<li>
+<p>The default is the Fortify Rulepack update server URL (https://update.fortify.com).</p>
+</li>
+</ol>
+<p>Note: Click Default to set the URL to the default Fortify Rulepack update server.</p>
+<ul>
+<li>To download security content from Fortify Software Security Center:</li>
+</ul>
+<p>In the URL box, type a Fortify Software Security Center URL.</p>
+<p>Select the Software Security Center check box.</p>
+<ul>
+<li>To use a proxy for connection to the security content server, select Use proxy, and then provide the following:</li>
+</ul>
+<p>The proxy server host name (for example, my.proxy.com)</p>
+<p>The proxy port number</p>
+<p>(Optional) Authentication credentials for the proxy server</p>
+<ul>
+<li>Click Check for Updates.
+Note: If you get an error that indicates the downloaded security content is unverified, you might have an invalid license file. Contact Micro Focus Fortify Customer Support for assistance.</li>
+</ul>
+<h3 id="to-review-the-security-issues_2">To review the security issues:</h3>
+<p>To see a detailed description of an issue, from the code editor or the Fortify Security Assistant window, right-click the issue, and then select View Vulnerability Details.</p>
+<p>The Vulnerability Details window provides a detailed description of the issue, examples, and recommendations of how to fix the issue.</p>
+<ol>
+<li>Click OK.</li>
+</ol>
+<p>IMAGE</p>
+<p>You can also use Fortify Security Assistant to analyze the whole project (or a specific set of files) and identify security issues. You cannot make any code changes during the analysis.</p>
+<p>To scan a project for issues, perform a code inspection as follows:</p>
+<ul>
+<li>
+<p>In IntelliJ IDEA, select Code &gt; Inspect Code.</p>
+</li>
+<li>
+<p>In Android Studio, select Analyze &gt; Inspect Code.</p>
+</li>
+</ul>
 
 
 
