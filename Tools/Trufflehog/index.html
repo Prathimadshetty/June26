@@ -938,9 +938,108 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Trufflehog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Trufflehog
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#secret-scanning-overview" class="md-nav__link">
+    Secret Scanning Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preventing-leaks" class="md-nav__link">
+    Preventing leaks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trufflehog-secret-scanning-enterprise-version" class="md-nav__link">
+    Trufflehog Secret Scanning – Enterprise Version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trufflehog-secret-scanning" class="md-nav__link">
+    TruffleHog Secret Scanning
+  </a>
+  
+    <nav class="md-nav" aria-label="TruffleHog Secret Scanning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    How it works
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regular-expressionregex" class="md-nav__link">
+    Regular Expression(regex)
+  </a>
+  
+    <nav class="md-nav" aria-label="Regular Expression(regex)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-regex" class="md-nav__link">
+    Custom Regex
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entropy" class="md-nav__link">
+    Entropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trufflehog-syntax" class="md-nav__link">
+    TruffleHog Syntax
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1113,6 +1212,89 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#secret-scanning-overview" class="md-nav__link">
+    Secret Scanning Overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#preventing-leaks" class="md-nav__link">
+    Preventing leaks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trufflehog-secret-scanning-enterprise-version" class="md-nav__link">
+    Trufflehog Secret Scanning – Enterprise Version
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trufflehog-secret-scanning" class="md-nav__link">
+    TruffleHog Secret Scanning
+  </a>
+  
+    <nav class="md-nav" aria-label="TruffleHog Secret Scanning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    How it works
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regular-expressionregex" class="md-nav__link">
+    Regular Expression(regex)
+  </a>
+  
+    <nav class="md-nav" aria-label="Regular Expression(regex)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-regex" class="md-nav__link">
+    Custom Regex
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entropy" class="md-nav__link">
+    Entropy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trufflehog-syntax" class="md-nav__link">
+    TruffleHog Syntax
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1128,6 +1310,101 @@
 
 <h1 id="trufflehog">Trufflehog</h1>
 <p>At M&amp;S Trufflehog is being used to scan the repositories to find leaked secrets</p>
+<h3 id="secret-scanning-overview">Secret Scanning Overview</h3>
+<p>Hardcoded secrets have always been a problem in organizations and are one of the first things we look for during a penetration test.</p>
+<p>When developers write secrets such as passwords and API keys directly into source code, these secrets can make their way to public repos or application packages, then into an attacker’s hands. Developers can sometimes make mistakes when handling sensitive data.</p>
+<p>A good strategy to minimize the risk of hardcoded secrets is to employ a scan that combines pattern searching with entropy analysis before code makes it to production and to store secrets in configuration files or secret management services instead.</p>
+<h3 id="preventing-leaks">Preventing leaks</h3>
+<p>There are several tools which can be used for scanning code Repositories for leaks.</p>
+<p>In this document, we are going to explain the implementation of below tools.</p>
+<ul>
+<li>TruffleHog secret scanning – Enterprise Version.</li>
+<li>TruffleHog secret scanning.</li>
+<li>GitHub Advance security secret scanning.</li>
+</ul>
+<h2 id="trufflehog-secret-scanning-enterprise-version">Trufflehog Secret Scanning – Enterprise Version</h2>
+<p>TruffleHog Enterprise includes managed Scanners that we host (the Hosted scanner), but you can also add your own self hosted Scanners. A scanner scans only the added sources that we are adding to the TruffleHog portal.</p>
+<p>TruffleHog support many sources like GitHub, Confluence, Jira, Slack etc</p>
+<p>Navigate to SOURCES and click on the plus button to add the source.</p>
+<h2 id="trufflehog-secret-scanning">TruffleHog Secret Scanning</h2>
+<p>Searches through git repositories for secrets, digging deep into commit history and branches. This is effective at finding secrets accidentally committed.</p>
+<h3 id="how-it-works">How it works</h3>
+<p>This module will go through the entire commit history of each branch, and check each diff from each commit, and check for secrets. This is both by regex and by entropy. For entropy checks, TruffleHog will evaluate the Shannon entropy for both the base64 char set and hexadecimal char set for every blob of text greater than 20 characters comprised of those character sets in each diff. If at any point a high entropy string &gt;20 characters is detected, it will print to the screen.</p>
+<h3 id="regular-expressionregex">Regular Expression(regex)</h3>
+<p>Regular expressions are patterns used to match character combinations in strings. A regular expression pattern is composed of simple characters, such as /abc/, or a combination of simple and special characters, such as /ab<em>c/ or /Chapter (\d+).\d</em>/.</p>
+<p>Hardcoded credentials such as API keys, encryption keys, and database passwords can often be discovered by grepping for keywords such as “key”, “secret”, “password”, “ghp”or “aws”.</p>
+<p>Straightforward way to detect hardcoded credentials is to use text search and regex. we can use string searches to look for keywords, known file names, and file formats that indicate a secret. RSA private key files, for instance, start with the string -----BEGIN RSA PRIVATE KEY-----.</p>
+<p>We can detect these by looking for patterns in source code using regex searches. For instance.</p>
+<p>AWS access keys IDs commonly start with the string “AKIA”, followed by 16 alphanumeric characters. So, if we do a regex search of AKIA[0–9A-Z]{16}, can very reliably identify strings of this format.
+Twilio API keys start with “SK” followed by 32 alphanumeric characters. So, we can locate them with the regex pattern SK[a-z0–9]{32}.
+Passwords in URLs can be detected by searching for patterns that indicate basic authentication syntax: [a-zA-Z]{3,15}:\/\/[^\/\:@]+:[^\/\:@]+@.{1,100}. This regex pattern will discover credentials included in URLs: protocol://username:password@example.com.
+ Identify the key formats for the services we use and target the search using those patterns.</p>
+<h4 id="custom-regex">Custom Regex</h4>
+<p>Custom regexes can be added with the following flag --rules <Path to rule>. This should be a json file of the following format:</p>
+<p>{</p>
+<p>"Slack Token": "(xox[p|b|o|a]-[0-9]{12}-[0-9]{12}-[0-9]{12}-[a-z0-9]{32})",</p>
+<p>"Generic Private Key POST Encapsulation Boundary": " PRIVATE KEY-----",</p>
+<p>"Generic Private Key Block POST Encapsulation Boundary": " PRIVATE KEY BLOCK-----",</p>
+<p>"Private key": "-----BEGIN PRIVATE KEY-----",</p>
+<p>"RSA private key": "-----BEGIN RSA PRIVATE KEY-----",</p>
+<p>"SSH (DSA) private key": "-----BEGIN DSA PRIVATE KEY-----",</p>
+<p>"SSH (EC) private key": "-----BEGIN EC PRIVATE KEY-----",</p>
+<p>"PGP private key block": "-----BEGIN PGP PRIVATE KEY BLOCK-----",</p>
+<p>"Amazon AWS Access Key ID": "AKIA[0-9A-Z]{16}",</p>
+<p>"Amazon MWS Auth Token": "amzn\.mws\.[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",</p>
+<p>"AWS API Key": "AKIA[0-9A-Z]{16}",</p>
+<p>"Bitly Key": "R_[0-9a-f]{32}",</p>
+<p>"Facebook Access Token": "EAACEdEose0cBA[0-9A-Za-z]+",</p>
+<p>"Facebook OAuth": "[f|F][a|A][c|C][e|E][b|B][o|O][o|O][k|K].*['|\"][0-9a-f]{32}['|\"]",</p>
+<p>"GitHub": "[g|G][i|I][t|T][h|H][u|U][b|B].*['|\"][0-9a-zA-Z]{35,40}['|\"]",</p>
+<p>"Generic API Key": "[a|A][p|P][i|I][_]?[k|K][e|E][y|Y].*['|\"][0-9a-zA-Z]{32,45}['|\"]",</p>
+<p>"Generic Secret": "[s|S][e|E][c|C][r|R][e|E][t|T].*['|\"][0-9a-zA-Z]{32,45}['|\"]",</p>
+<p>"Google API Key": "AIza[0-9A-Za-z\-_]{35}",</p>
+<p>"Google Cloud Platform API Key": "AIza[0-9A-Za-z\-_]{35}",</p>
+<p>"Google Cloud Platform OAuth": "[0-9]+-[0-9A-Za-z_]{32}\.apps\.googleusercontent\.com",</p>
+<p>"Google Drive API Key": "AIza[0-9A-Za-z\-_]{35}",</p>
+<p>"Google Drive OAuth": "[0-9]+-[0-9A-Za-z_]{32}\.apps\.googleusercontent\.com",</p>
+<p>"Google (GCP) Service-account": "\"type\": \"service_account\"",</p>
+<p>"Google Gmail API Key": "AIza[0-9A-Za-z\-_]{35}",</p>
+<p>"Google Gmail OAuth": "[0-9]+-[0-9A-Za-z_]{32}\.apps\.googleusercontent\.com",</p>
+<p>"Google OAuth Access Token": "ya29\.[0-9A-Za-z\-_]+",</p>
+<p>"Google YouTube API Key": "AIza[0-9A-Za-z\-_]{35}",</p>
+<p>"Google YouTube OAuth": "[0-9]+-[0-9A-Za-z_]{32}\.apps\.googleusercontent\.com",</p>
+<p>"Heroku API Key": "[h|H][e|E][r|R][o|O][k|K][u|U].*[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}",</p>
+<p>"LinkedIn API Key": "[l|L][i|I][n|N][k|K][e|E][d|D][i|I][n|N].*['|\"][0-9a-zA-Z]{16}['|\"]",</p>
+<p>"MailChimp API Key": "[0-9a-f]{32}-us[0-9]{1,2}",</p>
+<p>"Mailgun API Key": "key-[0-9a-zA-Z]{32}",</p>
+<p>"Password in URL": "[a-zA-Z]{3,10}://[^/\s:@]{3,20}:[^/\s:@]{3,20}@.{1,100}[\"'\s]",</p>
+<p>"PayPal Braintree Access Token": "access_token\$production\$[0-9a-z]{16}\$[0-9a-f]{32}",</p>
+<p>"Picatic API Key": "sk_live_[0-9a-z]{32}",</p>
+<p>"Slack Webhook": "https://hooks.slack.com/services/T[a-zA-Z0-9_]{8}/B[a-zA-Z0-9_]{8}/[a-zA-Z0-9_]{24}",</p>
+<p>"Stripe API Key": "sk_live_[0-9a-zA-Z]{24}",</p>
+<p>"Stripe Restricted API Key": "rk_live_[0-9a-zA-Z]{24}",</p>
+<p>"Square Access Token": "sq0atp-[0-9A-Za-z\-_]{22}",</p>
+<p>"Square OAuth Secret": "sq0csp-[0-9A-Za-z\-_]{43}",</p>
+<p>"Twilio API Key": "SK[0-9a-fA-F]{32}",</p>
+<p>"Twitter Access Token": "[t|T][w|W][i|I][t|T][t|T][e|E][r|R].*[1-9][0-9]+-[0-9a-zA-Z]{40}",</p>
+<p>"Twitter OAuth": "[t|T][w|W][i|I][t|T][t|T][e|E][r|R].*['|\"][0-9a-zA-Z]{35,44}['|\"]",</p>
+<p>"Github OAuth": " [A-Za-z0-9_]{255}",</p>
+<p>"password": "[a-zA-Z0-9_@]{8,24}",</p>
+<p>"Secret": "/[0-9a-zA-Z]{6,24}/"</p>
+<p>}</p>
+<p>Note:</p>
+<p>if custom options argument string is used, it will overwrite default settings
+if you want to just run the trufflehog command with NO arguments, set as a single-spaced string " ".</p>
+<h3 id="entropy">Entropy</h3>
+<p>Relying on text searches, we risk missing secrets that don’t adhere to a specific format. This is where entropy scanning comes in.</p>
+<p>Password entropy is a measurement of how unpredictable a password is. It is based on the character set used (which is expansible by using lowercase, uppercase, numbers as well as symbols) as well as password length.</p>
+<p>Think of entropy as how random and unpredictable something is. For instance, a string composed of only one-character aaaaa has very low entropy. A longer string with a larger set of characters wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY, has higher entropy.</p>
+<p>Entropy is a good tool to find highly randomized and complex strings, which often indicates a secret. By measuring the entropy of string literals in your source code, you can discover suspicious strings of any format.</p>
+<h3 id="trufflehog-syntax">TruffleHog Syntax</h3>
+<p>Below is the help command used to see the trufflehog syntax</p>
+<p>IMAGE</p>
+<p>With the --include_paths and --exclude_paths options, it is also possible to limit scanning to a subset of objects in the Git history by defining regular expressions (one per line) in a file to match the targeted object paths.</p>
+<p>include-patterns.txt
+exclude-patterns.txt
+These filter files could then be applied.</p>
+<p>trufflehog --include_paths include-patterns.txt --exclude_paths exclude-patterns.txt file://path/to/my/repo.git</p>
 
 
 
