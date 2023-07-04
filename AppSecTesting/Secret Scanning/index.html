@@ -861,6 +861,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#github-actions-pipeline-integration-" class="md-nav__link">
+    Github Actions pipeline Integration-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1186,6 +1200,20 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#github-actions-pipeline-integration-" class="md-nav__link">
+    Github Actions pipeline Integration-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1244,6 +1272,52 @@
                 fi</p>
 <pre><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
 </code></pre>
+<h3 id="github-actions-pipeline-integration-">Github Actions pipeline Integration-</h3>
+<p>steps:
+    - uses: actions/checkout@v1
+    - name: trufflehog scanning
+      continue-on-error: false
+      run: |
+        curl -q "https://storage.googleapis.com/thog-releases/trufflehog-scanner/latest/fetch.sh" | bash
+        ./trufflehog --fail-verified git
+         if: always()
+    - name: Notify dedicated teams channel for secrets
+      if: failure() 
+      run: |
+         curl -H 'Content-Type: application/json' -d ' {"text": "Your application has secrets" }'  ${{ secrets.webhook}}
+         echo "Secrets found"
+      continue-on-error: true 
+    - name: Notify dedicated teams channel for secrets not found
+      if: success()
+      run: |
+            echo "No Secrets"
+            exit 0
+       continue-on-error: true</p>
+<pre><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
+
+Note - Another approach is to use the TruffleHog Enterprise Action which is recommended.
+</code></pre>
+<p>name: TruffleHog Enterprise scan</p>
+<p>on: [push, pull_request]</p>
+<p>jobs:
+  scanning:
+    name: TruffleHog Enterprise scan
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # fetch all history so multiple commits can be scanned
+      - name: TruffleHog Enterprise scan
+        uses: trufflesecurity/TruffleHog-Enterprise-Github-Action@main
+        with:
+            args: --fail-verified ${{ github.event.repository.default_branch }} HEAD</p>
+<pre><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
+</code></pre>
+<h3 id="references">References</h3>
+<p>https://docs.trufflesecurity.com/docs/scanning-git/scanning-in-ci/</p>
+<p>https://github.com/trufflesecurity/trufflehog</p>
+<p>Contact the team for any clarification- dl-appsecteam@marks-and-spencer.com</p>
 
 
 
