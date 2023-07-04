@@ -910,9 +910,94 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          FOD
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         FOD
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#integration-steps" class="md-nav__link">
+    Integration steps:
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration steps:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-devops" class="md-nav__link">
+    Azure Devops:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    Github Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jenkins" class="md-nav__link">
+    Jenkins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concourse-ci" class="md-nav__link">
+    Concourse CI:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-features" class="md-nav__link">
+    Product Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    Architecture
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1113,6 +1198,75 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#integration-steps" class="md-nav__link">
+    Integration steps:
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration steps:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-devops" class="md-nav__link">
+    Azure Devops:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    Github Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jenkins" class="md-nav__link">
+    Jenkins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concourse-ci" class="md-nav__link">
+    Concourse CI:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-features" class="md-nav__link">
+    Product Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    Architecture
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1127,7 +1281,270 @@
 
 
 <h1 id="fortify-on-demandfod">Fortify On Demand(FOD)</h1>
-<p>At M&amp;S FOD is being used for Static Application Security Testing (SAST) and Dynamic Application Security Testing (DAST).</p>
+<p>At M&amp;S FOD is being used for Static Application Security Testing (SAST) and Dynamic Application Security Testing (DAST). Fortify on Demand (FoD) delivers application security as a service, providing customers with the security testing, vulnerability management, expertise, and support needed to easily create, supplement, and expand a Software Security Assurance program.</p>
+<h3 id="integration-steps">Integration steps:</h3>
+<h4 id="azure-devops">Azure Devops:</h4>
+<p>Step 1: Store GitHub Username, Personal Access Token  and API_KEY and API_SECRET in Azure Keyvault.</p>
+<p>Step 2: Create a Pipeline.yml with following code</p>
+<div class="language-text highlight"><pre><span></span><code># Starter pipeline
+​
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+​
+trigger: none
+​
+jobs:
+- job: FOD_Scanning
+  pool:
+    name: poc-2-test
+  steps:
+​
+​
+  - task: Bash@3
+    inputs:
+      targetType: &#39;inline&#39;
+      script: |
+        wget -c https://github.com/fod-dev/fod-uploader-java/releases/download/v5.4.0/FodUpload.jar
+        pwd
+        ls -lrt
+
+  - task: Bash@3
+    inputs:
+      targetType: &#39;inline&#39;
+      script: |
+        apt install zip
+        zip -r &#39;WebGoat-develop.zip&#39; .
+
+  - task: AzureKeyVault@1
+    inputs:
+      azureSubscription: &#39;AzureResourceManager&#39;
+      KeyVaultName: &#39;cicd-v2-shared-kv&#39;
+      SecretsFilter: &#39;*&#39;
+      RunAsPreJob: false
+  - task: Bash@3
+    inputs:
+      targetType: &#39;inline&#39;
+      script: |
+        java -jar FodUpload.jar -ac $(FOD-API-KEY) $(FOD-API-SECRET) -rid $(RELEASE-ID) -purl $(FOD-PORTAL-URL) -apiurl $(FOD-API-URL) -z WebGoat-develop.zip -ep 2 -rp 0 -pp 1 -apf -I 1
+    displayName: &#39;FOD SAST Scan&#39;
+
+  - task: Bash@3
+    inputs:
+      targetType: &#39;inline&#39;
+      script: |
+             auth=$(curl -X POST --header &#39;Content-Type: application/x-www-form-urlencoded&#39; --header &#39;Connection: close&#39; -d &#39;grant_type=client_credentials&amp;scope=api-tenant&amp;client_id=$(FOD-API-KEY)&amp;client_secret=$(FOD-API-SECRET)&#39; &#39;https://api.emea.fortify.com/oauth/token&#39;)
+             tok3n=$( echo &quot;$auth&quot; | jq &#39;.[&quot;access_token&quot;]&#39; )
+             tok3n=&quot;${tok3n:1:-1}&quot;
+             releasedetails=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/releases/&#39;$(RELEASE-ID))
+             scanid=$( echo &quot;$releasedetails&quot; | jq .currentStaticScanId )
+             applicationname=$( echo &quot;$releasedetails&quot; | jq .applicationName | sed &#39;s/[&quot;]//g&#39;)
+             scanSummary=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/scans/&#39;${scanid}&#39;/summary&#39;)
+             CRITICAL=$( echo &quot;$releasedetails&quot; | jq .staticCritical )
+             HIGH=$( echo &quot;$releasedetails&quot; | jq .staticHigh )
+             if [ $CRITICAL -gt 0 ]
+             then
+               echo &quot;##[error]Application has critical Issues&quot;
+               curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Pipeline had warnings because critical issues in FoD SAST are present for &#39;$applicationname&#39;&quot;}&#39; $(teams_webhook)
+               #exit 1
+             elif [ $HIGH -gt 0 ]
+             then
+               echo &quot;##[error]Application has High Issues&quot;
+               curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Pipeline had warnings because high issues in FoD SAST are present for &#39;$applicationname&#39;&quot;}&#39; $(teams_webhook)
+               #exit 1
+             else
+               echo &quot;PASSED&quot;
+             fi
+    continueOnError: true           
+    displayName: &#39;FOD Security Gating&#39;
+</code></pre></div>
+<p>FOD-PORTAL-URL - https://emea.fortify.com/</p>
+<p>FOD-API-URL   -   https://api.emea.fortify.com/</p>
+<div class="language-text highlight"><pre><span></span><code>Note: To enforce security gating in block mode please uncomment exit code 1.
+</code></pre></div>
+<p>Sample Output:-</p>
+<p>1) After the scanning is completed, if the code has Critical or High security vulnerabilities, the job status will give an alert because of Security Gating Implementation. Please refer the below screenshot</p>
+<p>IMAGE</p>
+<p>To Resolve or Validate security vulnerabilities:-</p>
+<p>To validate or Resolve any security vulnerabilities after scanning the code in any CI/CD pipeline. Open that Application in Fortify on demand portal and check the last build run details. It will explain about each vulnerabilities clearly.</p>
+<h4 id="github-actions">Github Actions</h4>
+<div class="language-text highlight"><pre><span></span><code>Fortify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: DigitalInnovation/cloud-devsecops-pipelineactions/workflows/appsec/fortify@v1.1.1
+        with:
+          sast_release_id: ${{secrets.FOD_RELEASE_ID}}
+          sast_api_key: ${{ secrets.FOD_API_KEY}}
+          sast_api_secret: ${{ secrets.FOD_API_SECRET}}
+
+      - name: FOD Security Gating
+        run: |
+          auth=$(curl -X POST --header &#39;Content-Type: application/x-www-form-urlencoded&#39; --header &#39;Connection: close&#39; -d &#39;grant_type=client_credentials&amp;scope=api-tenant&amp;client_id=${{secrets.FOD_API_KEY}}&amp;client_secret=${{secrets.FOD_API_SECRET}}&#39; &#39;https://api.emea.fortify.com/oauth/token&#39;)
+          tok3n=$( echo &quot;$auth&quot; | jq &#39;.[&quot;access_token&quot;]&#39; )
+          tok3n=&quot;${tok3n:1:-1}&quot;
+          releasedetails=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/releases/&#39;${{secrets.FOD_RELEASE_ID}})
+          scanid=$( echo &quot;$releasedetails&quot; | jq .currentStaticScanId )
+          applicationname=$( echo &quot;$releasedetails&quot; | jq .applicationName | sed &#39;s/[&quot;]//g&#39;)
+          scanSummary=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/scans/&#39;${scanid}&#39;/summary&#39;)
+          CRITICAL=$( echo &quot;$releasedetails&quot; | jq .staticCritical )
+          HIGH=$( echo &quot;$releasedetails&quot; | jq .staticHigh )
+          if [ $CRITICAL -gt 0 ]
+          then
+            echo &quot;##[error]Application has critical Issues&quot;          
+            curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Application has critical Issues in FOD&quot;}&#39; ${{secrets.TEAMS_WEBHOOK}}          
+            #exit 1
+          elif [ $HIGH -gt 0 ]
+          then
+            echo &quot;##[error]Application has High Issues&quot;
+            curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Application has high Issues in FOD&quot;}&#39; ${{secrets.TEAMS_WEBHOOK}}
+            #exit 1
+          else
+            echo &quot;PASSED&quot;
+          fi
+        continue-on-error: true
+</code></pre></div>
+<p>Note: To enforce security gating in block mode please uncomment exit code 1.</p>
+<h4 id="jenkins">Jenkins</h4>
+<p>Step 1:  Store GitHub username and personal access token in Jenkins credentials.​​​​​​​</p>
+<p>Step 2:  Store API key, API secret in key vault credentials.</p>
+<p>Step 3: create a Jenkins pipeline and use the following code.</p>
+<div class="language-text highlight"><pre><span></span><code>pipeline {
+    agent any
+
+    stages {
+
+        stage(&#39;Git Checkout&#39;){
+            steps {
+                checkout([$class: &#39;GitSCM&#39;, branches: [[name: &#39;&lt;Github_branchname&gt;&#39;]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: &#39;&lt;Github_credentials&gt;&#39;, url: &#39;&lt;Github_URL&gt;&#39;]]])
+                }
+            }
+
+        stage(&#39;ZIP directory to be uploaded or unzip something&#39;) {
+            agent {
+                docker {
+                    image &#39;javieraviles/zip&#39;
+                    reuseNode true
+                }
+            }
+            steps {
+                echo &quot;Creating zip file...&quot;
+
+                sh &quot;zip -r &#39;WebGoat-develop.zip&#39; &#39;&lt;Jenkins path where all the github files were downloaded&gt;&#39;&quot;
+            }
+            }
+        stage(&#39;Downloading the FOD jar file from Github&#39;){
+            steps{
+                sh &#39;wget -c https://github.com/fod-dev/fod-uploader-java/releases/download/v5.4.0/FodUpload.jar&#39;
+                }
+                }
+        stage(&#39;Retrieve keyvault credentials and Upload the ZIP file to FOD using jar&#39;){
+
+            options{
+
+                azureKeyVault(
+
+                    credentialID: &#39;&lt;Servicepriciple_credentials&gt;&#39;,
+​
+                    keyVaultURL: &#39;&lt;Keyvault_url&gt;&#39;,
+
+                    secrets: [
+
+                        [envVariable: &#39;API_KEY_FOD&#39;, name: &#39;FOD-API-KEY-Test&#39;, secretType: &#39;Secret&#39;],
+                        [envVariable: &#39;API_SECRET_FOD&#39;, name: &#39;FOD-API-SECRET-Test&#39;, secretType: &#39;Secret&#39;]
+
+                        ]
+                        )
+                        }
+                            steps{
+                                sh &#39;java -version&#39;
+
+                                sh &#39;java -jar FodUpload.jar -ac $API_KEY_FOD $API_SECRET_FOD -rid 6560 -purl https://emea.fortify.com/ -apiurl                                       https://api.emea.fortify.com/ -z WebGoat-develop.zip -ep 2 -rp 0 -pp 1 -apf -I 1&#39;
+
+                                }
+                                }
+
+
+
+
+                }
+            }
+</code></pre></div>
+<p>To understand what parameters, we need to use to run API from CI/CD tools. Please refer this link</p>
+<p>Note:</p>
+<p>1) If we are Scanning any code with "FOD Plugin", once the scan found any security vulnerabilities in code then it will automatically fail the CI/CD pipeline.</p>
+<p>2) As we are using FodUpload jar file to Scan the code instead of FOD plugin. There is no such process to fail the pipeline automatically once the scan found any security vulnerabilities in code.</p>
+<p>3) we need to use the custom code to fail the pipelines while using FodUpload jar to scan the code. Include lines from "55 to 63" to fail the CI/CD pipeline.</p>
+<p>4) $? is a special variable in shell that reads the exit status of the last command executed.</p>
+<p>Sample output:</p>
+<p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities Please refer the below screenshot</p>
+<p>IMAGE</p>
+<h4 id="concourse-ci">Concourse CI:</h4>
+<p>Step 1: Store GitHub Username, Personal Access Token  and API_KEY and API_SECRET in Hashicorp Vault.</p>
+<p>Step 2: Create a Pipeline.yml with following code</p>
+<div class="language-text highlight"><pre><span></span><code>resources:
+  - name: source-code
+    type: git
+    source:
+      uri: &lt;Github_Url&gt;
+      branch: &lt;branch_name&gt;
+      username: ((Github.username))
+      password: ((Github.personal_access_token))
+
+jobs:
+  - name: source-code
+    public: false
+    plan:
+      - get: source-code
+        trigger: true
+      - task: test-using-FOD-SAST
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: { repository: ubuntu, tag: &quot;latest&quot; }
+          params:
+            FOD_API_KEY: ((API_CRED.FOD_API_KEY))
+            FOD_API_SECRET: ((API_CRED.FOD_API_SECRET))
+          inputs:
+            - name: source-code
+          run:
+            path: /bin/sh
+            args:
+              - -c
+              - |
+                apt-get update
+                echo &quot;--------install java------&quot;               
+                apt-get update &amp;&amp; DEBIAN_FRONTEND=&quot;noninteractive&quot; TZ=&quot;Asia/india&quot; apt-get install -y tzdata
+                apt-get -y install openjdk-11-jre               
+                echo &quot;-------install zip----&quot;
+                apt-get -y install zip
+                echo &quot;-----install wget------&quot;
+                apt-get -y install wget
+                echo &quot;java --version&quot;
+                cd source-code
+                zip -r uploadsourc.zip . -i /*.*
+                wget -c https://github.com/fod-dev/fod-uploader-java/releases/download/v5.4.0/FodUpload.jar
+                java -jar FodUpload.jar -ac ((API_CRED.FOD_API_KEY)) ((API_CRED.FOD_API_SECRET)) -rid 6560 -purl https://emea.fortify.com/ -                      apiurl https://api.emea.fortify.com/ -z uploadsourc.zip -ep 2 -rp 0 -pp 1 -apf -I 1
+</code></pre></div>
+<p>Note:</p>
+<p>Use the variable name 'API_CRED.FOD_API_KEY' to pass fortify on demand  API token in the pipeline.
+All the variable fields are configured in Hashicorp vault for reusability and manage the secrets ((Hashicorp vault variable)).
+GitHub and Fortify on demand details to be updated in the Hashicorp Vault. (Don't hard code username and password values in the pipeline)
+For steps to create a secret keys in HC Vault, refer here.</p>
+<p>Sample Output:-</p>
+<p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities Please refer the below screenshot</p>
+<p>IMAGE</p>
+<h3 id="product-features">Product Features</h3>
+<ul>
+<li>Fortify on Demand gives you the tools to create, supplement, and expand a Software Security Assurance program with no infrastructure investments or security staff required.</li>
+<li>Fortify on Demand is the only application security provider to offer static application security testing (SAST), dynamic application security testing (DAST), and mobile application testing (MAST) on demand so you can choose the solution that’s right for your business.</li>
+<li>Fortify on Demand assessments include a review by  security experts. In combination with innovative Fortify Scan Analytics machine learning platform, it removes false positives and ensures overall quality so your development teams can maximize their remediation efforts early in the software lifecycle.</li>
+<li>Fortify on Demand gives developers the tools to write secure code and optimize application security at every step of the software development cycle.</li>
+<li>Fortify on Demand is a comprehensive platform designed with helpdesk ticketing available 24x7 through a dedicated support team.x-www-</li>
+</ul>
+<h4 id="architecture">Architecture</h4>
+<p>IMAGE</p>
 
 
 
