@@ -1243,9 +1243,9 @@
 <p>General approach : Platform independent CI integration-</p>
 <p>Option 1: Trufflehog Binary(Enterprise Scan)(Recommended)</p>
 <p>You can run Trufflehog Enterprise Scan with Trufflehog Binary using the below command-</p>
-<pre><code>"curl -q "https://storage.googleapis.com/thog-releases/trufflehog-scanner/latest/fetch.sh" | bash
-            ./trufflehog --fail-verified git"
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code>&quot;curl -q &quot;https://storage.googleapis.com/thog-releases/trufflehog-scanner/latest/fetch.sh&quot; | bash
+            ./trufflehog --fail-verified git&quot;
+</code></pre></div>
 <p>curl command will fetch the Trufflehog scanner latest version for installation </p>
 <p>./trufflehog – does the actual scanning</p>
 <p>--fail-verified- Only emit failure code for verified findings.</p>
@@ -1270,8 +1270,8 @@
                 else
                  echo "Your application has no secrets"
                 fi</p>
-<pre><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
+</code></pre></div>
 <h3 id="github-actions-pipeline-integration-">Github Actions pipeline Integration-</h3>
 <p>steps:
     - uses: actions/checkout@v1
@@ -1293,10 +1293,10 @@
             echo "No Secrets"
             exit 0
        continue-on-error: true</p>
-<pre><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
+<div class="language-text highlight"><pre><span></span><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
 
 Note - Another approach is to use the TruffleHog Enterprise Action which is recommended.
-</code></pre>
+</code></pre></div>
 <p>name: TruffleHog Enterprise scan</p>
 <p>on: [push, pull_request]</p>
 <p>jobs:
@@ -1312,8 +1312,8 @@ Note - Another approach is to use the TruffleHog Enterprise Action which is reco
         uses: trufflesecurity/TruffleHog-Enterprise-Github-Action@main
         with:
             args: --fail-verified ${{ github.event.repository.default_branch }} HEAD</p>
-<pre><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
-</code></pre>
+<div class="language-text highlight"><pre><span></span><code>Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
+</code></pre></div>
 <h3 id="references">References</h3>
 <p>https://docs.trufflesecurity.com/docs/scanning-git/scanning-in-ci/</p>
 <p>https://github.com/trufflesecurity/trufflehog</p>
