@@ -77,11 +77,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#secret-scanning" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -1257,55 +1252,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#secret-scanning" class="md-nav__link">
-    Secret scanning
-  </a>
-  
-    <nav class="md-nav" aria-label="Secret scanning">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#how-to-integrate" class="md-nav__link">
-    How to integrate?
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#azure-devops-pipeline-integration" class="md-nav__link">
-    Azure DevOps pipeline Integration
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#github-actions-pipeline-integration-" class="md-nav__link">
-    Github Actions pipeline Integration-
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
-    References
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1321,96 +1267,7 @@
 
   <h1>Index</h1>
 
-<h2 id="secret-scanning">Secret scanning</h2>
-<p>We can use TruffleHog in CI to prevent secrets from being merged in Git. This document explains how to integrate Trufflehog in DevOps pipeline in CI.</p>
-<p>At M&amp;S we use Trufflehog for scanning the repos for finding hardcoded secrets. </p>
-<h3 id="how-to-integrate">How to integrate?</h3>
-<p>General approach : Platform independent CI integration-</p>
-<p>Option 1: Trufflehog Binary(Enterprise Scan)(Recommended)</p>
-<p>You can run Trufflehog Enterprise Scan with Trufflehog Binary using the below command-</p>
-<div class="language-text highlight"><pre><span></span><code>&quot;curl -q &quot;https://storage.googleapis.com/thog-releases/trufflehog-scanner/latest/fetch.sh&quot; | bash
-            ./trufflehog --fail-verified git&quot;
-</code></pre></div>
-<p>curl command will fetch the Trufflehog scanner latest version for installation </p>
-<p>./trufflehog – does the actual scanning</p>
-<p>--fail-verified- Only emit failure code for verified findings.</p>
-<p>TruffleHog will return a non-zero exit code if there are findings.</p>
-<h3 id="azure-devops-pipeline-integration">Azure DevOps pipeline Integration</h3>
-<div class="language-text highlight"><pre><span></span><code>trigger:
-- &#39;develop&#39;
-
-
-
-pool:
-  vmImage: ubuntu-latest
-
-steps:
-  - task: Bash@3
-    inputs:
-      targetType: &#39;inline&#39;
-      script: |
-        curl -q &quot;https://storage.googleapis.com/thog-releases/trufflehog-scanner/latest/fetch.sh&quot; | bash
-                ./trufflehog --fail-verified git
-                 status=$?
-                  echo $status
-                 if [ $status -eq 1 ]
-                then
-                 curl -H &#39;Content-Type: application/json&#39; -d &#39; {&quot;text&quot;:  &quot;Trufflehog Scan for the (ApplicationName) has secrets&quot;  }&#39; $(WEBHOOK)
-                else
-                 echo &quot;Your application has no secrets&quot;
-                fi
-
-Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
-</code></pre></div>
-<h3 id="github-actions-pipeline-integration-">Github Actions pipeline Integration-</h3>
-<div class="language-text highlight"><pre><span></span><code>steps:
-    - uses: actions/checkout@v1
-    - name: trufflehog scanning
-      continue-on-error: false
-      run: |
-        curl -q &quot;https://storage.googleapis.com/thog-releases/trufflehog-scanner/latest/fetch.sh&quot; | bash
-        ./trufflehog --fail-verified git
-         if: always()
-    - name: Notify dedicated teams channel for secrets
-      if: failure() 
-      run: |
-         curl -H &#39;Content-Type: application/json&#39; -d &#39; {&quot;text&quot;: &quot;Your application has secrets&quot; }&#39;  ${{ secrets.webhook}}
-         echo &quot;Secrets found&quot;
-      continue-on-error: true 
-    - name: Notify dedicated teams channel for secrets not found
-      if: success()
-      run: |
-            echo &quot;No Secrets&quot;
-            exit 0
-       continue-on-error: true
-
-Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
-
-Note - Another approach is to use the TruffleHog Enterprise Action which is recommended.
-</code></pre></div>
-<p>name: TruffleHog Enterprise scan</p>
-<div class="language-text highlight"><pre><span></span><code>on: [push, pull_request]
-
-jobs:
-  scanning:
-    name: TruffleHog Enterprise scan
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 0 # fetch all history so multiple commits can be scanned
-      - name: TruffleHog Enterprise scan
-        uses: trufflesecurity/TruffleHog-Enterprise-Github-Action@main
-        with:
-            args: --fail-verified ${{ github.event.repository.default_branch }} HEAD
-
-Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
-</code></pre></div>
-<h3 id="references">References</h3>
-<p>https://docs.trufflesecurity.com/docs/scanning-git/scanning-in-ci/</p>
-<p>https://github.com/trufflesecurity/trufflehog</p>
-<p>Contact the team for any clarification- dl-appsecteam@marks-and-spencer.com</p>
+<p>Secure SDLC</p>
 
 
 
