@@ -1416,10 +1416,10 @@
                   
 
 
-<h1 id="fortify-on-demandfod">Fortify On Demand(FOD)</h1>
+<h1 id="fortify-on-demandfod">Fortify On Demand(FOD)<a class="headerlink" href="#fortify-on-demandfod" title="Permanent link">&para;</a></h1>
 <p>At M&amp;S FOD is being used for Static Application Security Testing (SAST) and Dynamic Application Security Testing (DAST). FOD delivers application security as a service, providing customers with the security testing, vulnerability management, expertise, and support needed to easily create, supplement, and expand a Software Security Assurance program.</p>
-<h3 id="integration-steps">Integration steps:</h3>
-<h4 id="azure-devops">Azure Devops:</h4>
+<h3 id="integration-steps">Integration steps:<a class="headerlink" href="#integration-steps" title="Permanent link">&para;</a></h3>
+<h4 id="azure-devops">Azure Devops:<a class="headerlink" href="#azure-devops" title="Permanent link">&para;</a></h4>
 <p>Step 1: Store GitHub Username, Personal Access Token  and API_KEY and API_SECRET in Azure Keyvault.</p>
 <p>Step 2: Create a Pipeline.yml with following code</p>
 <div class="language-text highlight"><pre><span></span><code># Starter pipeline
@@ -1503,7 +1503,7 @@ jobs:
 <p>IMAGE</p>
 <p>To Resolve or Validate security vulnerabilities:-</p>
 <p>To validate or Resolve any security vulnerabilities after scanning the code in any CI/CD pipeline. Open that Application in Fortify on demand portal and check the last build run details. It will explain about each vulnerabilities clearly.</p>
-<h4 id="github-actions">Github Actions</h4>
+<h4 id="github-actions">Github Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h4>
 <div class="language-text highlight"><pre><span></span><code>Fortify:
     runs-on: ubuntu-latest
     steps:
@@ -1541,7 +1541,7 @@ jobs:
         continue-on-error: true
 </code></pre></div>
 <p>Note: To enforce security gating in block mode please uncomment exit code 1.</p>
-<h4 id="jenkins">Jenkins</h4>
+<h4 id="jenkins">Jenkins<a class="headerlink" href="#jenkins" title="Permanent link">&para;</a></h4>
 <p>Step 1:  Store GitHub username and personal access token in Jenkins credentials.​​​​​​​</p>
 <p>Step 2:  Store API key, API secret in key vault credentials.</p>
 <p>Step 3: create a Jenkins pipeline and use the following code.</p>
@@ -1615,7 +1615,7 @@ jobs:
 <p>Sample output:</p>
 <p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities Please refer the below screenshot</p>
 <p>IMAGE</p>
-<h4 id="concourse-ci">Concourse CI:</h4>
+<h4 id="concourse-ci">Concourse CI:<a class="headerlink" href="#concourse-ci" title="Permanent link">&para;</a></h4>
 <p>Step 1: Store GitHub Username, Personal Access Token  and API_KEY and API_SECRET in Hashicorp Vault.</p>
 <p>Step 2: Create a Pipeline.yml with following code</p>
 <div class="language-text highlight"><pre><span></span><code>resources:
@@ -1671,7 +1671,7 @@ For steps to create a secret keys in HC Vault, refer here.</p>
 <p>Sample Output:-</p>
 <p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities Please refer the below screenshot</p>
 <p>IMAGE</p>
-<h3 id="product-features">Product Features</h3>
+<h3 id="product-features">Product Features<a class="headerlink" href="#product-features" title="Permanent link">&para;</a></h3>
 <ul>
 <li>Fortify on Demand gives you the tools to create, supplement, and expand a Software Security Assurance program with no infrastructure investments or security staff required.</li>
 <li>Fortify on Demand is the only application security provider to offer static application security testing (SAST), dynamic application security testing (DAST), and mobile application testing (MAST) on demand so you can choose the solution that’s right for your business.</li>
@@ -1679,7 +1679,7 @@ For steps to create a secret keys in HC Vault, refer here.</p>
 <li>Fortify on Demand gives developers the tools to write secure code and optimize application security at every step of the software development cycle.</li>
 <li>Fortify on Demand is a comprehensive platform designed with helpdesk ticketing available 24x7 through a dedicated support team.x-www-</li>
 </ul>
-<h4 id="architecture">Architecture</h4>
+<h4 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h4>
 <p>IMAGE</p>
 
 

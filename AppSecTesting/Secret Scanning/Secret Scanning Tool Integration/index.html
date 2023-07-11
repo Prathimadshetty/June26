@@ -1486,11 +1486,11 @@
                   
 
 
-<h1 id="secret-scanning-tool-and-ci-integration">Secret Scanning Tool and CI Integration</h1>
+<h1 id="secret-scanning-tool-and-ci-integration">Secret Scanning Tool and CI Integration<a class="headerlink" href="#secret-scanning-tool-and-ci-integration" title="Permanent link">&para;</a></h1>
 <p>At M&amp;S Trufflehog is being used to scan the repositories to find leaked secrets</p>
 <p>We can use TruffleHog in CI to prevent secrets from being merged in Git. This document explains how to integrate Trufflehog in DevOps pipeline in CI.</p>
 <p>At M&amp;S we use Trufflehog for scanning the repos for finding hardcoded secrets. </p>
-<h3 id="preventing-leaks">Preventing leaks</h3>
+<h3 id="preventing-leaks">Preventing leaks<a class="headerlink" href="#preventing-leaks" title="Permanent link">&para;</a></h3>
 <p>There are several tools which can be used for scanning code Repositories for leaks.</p>
 <p>In this document, we are going to explain the implementation of below tools.</p>
 <ul>
@@ -1498,15 +1498,15 @@
 <li>TruffleHog secret scanning.</li>
 <li>GitHub Advance security secret scanning.</li>
 </ul>
-<h2 id="trufflehog-secret-scanning-enterprise-version">Trufflehog Secret Scanning – Enterprise Version</h2>
+<h2 id="trufflehog-secret-scanning-enterprise-version">Trufflehog Secret Scanning – Enterprise Version<a class="headerlink" href="#trufflehog-secret-scanning-enterprise-version" title="Permanent link">&para;</a></h2>
 <p>TruffleHog Enterprise includes managed Scanners that we host (the Hosted scanner), but you can also add your own self hosted Scanners. A scanner scans only the added sources that we are adding to the TruffleHog portal.</p>
 <p>TruffleHog support many sources like GitHub, Confluence, Jira, Slack etc</p>
 <p>Navigate to SOURCES and click on the plus button to add the source.</p>
-<h2 id="trufflehog-secret-scanning">TruffleHog Secret Scanning</h2>
+<h2 id="trufflehog-secret-scanning">TruffleHog Secret Scanning<a class="headerlink" href="#trufflehog-secret-scanning" title="Permanent link">&para;</a></h2>
 <p>Searches through git repositories for secrets, digging deep into commit history and branches. This is effective at finding secrets accidentally committed.</p>
-<h3 id="how-it-works">How it works</h3>
+<h3 id="how-it-works">How it works<a class="headerlink" href="#how-it-works" title="Permanent link">&para;</a></h3>
 <p>This module will go through the entire commit history of each branch, and check each diff from each commit, and check for secrets. This is both by regex and by entropy. For entropy checks, TruffleHog will evaluate the Shannon entropy for both the base64 char set and hexadecimal char set for every blob of text greater than 20 characters comprised of those character sets in each diff. If at any point a high entropy string &gt;20 characters is detected, it will print to the screen.</p>
-<h3 id="regular-expressionregex">Regular Expression(regex)</h3>
+<h3 id="regular-expressionregex">Regular Expression(regex)<a class="headerlink" href="#regular-expressionregex" title="Permanent link">&para;</a></h3>
 <p>Regular expressions are patterns used to match character combinations in strings. A regular expression pattern is composed of simple characters, such as /abc/, or a combination of simple and special characters, such as /ab<em>c/ or /Chapter (\d+).\d</em>/.</p>
 <p>Hardcoded credentials such as API keys, encryption keys, and database passwords can often be discovered by grepping for keywords such as “key”, “secret”, “password”, “ghp”or “aws”.</p>
 <p>Straightforward way to detect hardcoded credentials is to use text search and regex. we can use string searches to look for keywords, known file names, and file formats that indicate a secret. RSA private key files, for instance, start with the string -----BEGIN RSA PRIVATE KEY-----.</p>
@@ -1515,7 +1515,7 @@
 Twilio API keys start with “SK” followed by 32 alphanumeric characters. So, we can locate them with the regex pattern SK[a-z0–9]{32}.
 Passwords in URLs can be detected by searching for patterns that indicate basic authentication syntax: [a-zA-Z]{3,15}:\/\/[^\/\:@]+:[^\/\:@]+@.{1,100}. This regex pattern will discover credentials included in URLs: protocol://username:password@example.com.
  Identify the key formats for the services we use and target the search using those patterns.</p>
-<h4 id="custom-regex">Custom Regex</h4>
+<h4 id="custom-regex">Custom Regex<a class="headerlink" href="#custom-regex" title="Permanent link">&para;</a></h4>
 <p>Custom regexes can be added with the following flag --rules <Path to rule>. This should be a json file of the following format:</p>
 <p>{</p>
 <p>"Slack Token": "(xox[p|b|o|a]-[0-9]{12}-[0-9]{12}-[0-9]{12}-[a-z0-9]{32})",</p>
@@ -1568,12 +1568,12 @@ Passwords in URLs can be detected by searching for patterns that indicate basic 
 <p>Note:</p>
 <p>if custom options argument string is used, it will overwrite default settings
 if you want to just run the trufflehog command with NO arguments, set as a single-spaced string " ".</p>
-<h3 id="entropy">Entropy</h3>
+<h3 id="entropy">Entropy<a class="headerlink" href="#entropy" title="Permanent link">&para;</a></h3>
 <p>Relying on text searches, we risk missing secrets that don’t adhere to a specific format. This is where entropy scanning comes in.</p>
 <p>Password entropy is a measurement of how unpredictable a password is. It is based on the character set used (which is expansible by using lowercase, uppercase, numbers as well as symbols) as well as password length.</p>
 <p>Think of entropy as how random and unpredictable something is. For instance, a string composed of only one-character aaaaa has very low entropy. A longer string with a larger set of characters wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY, has higher entropy.</p>
 <p>Entropy is a good tool to find highly randomized and complex strings, which often indicates a secret. By measuring the entropy of string literals in your source code, you can discover suspicious strings of any format.</p>
-<h3 id="trufflehog-syntax">TruffleHog Syntax</h3>
+<h3 id="trufflehog-syntax">TruffleHog Syntax<a class="headerlink" href="#trufflehog-syntax" title="Permanent link">&para;</a></h3>
 <p>Below is the help command used to see the trufflehog syntax</p>
 <p>IMAGE</p>
 <p>With the --include_paths and --exclude_paths options, it is also possible to limit scanning to a subset of objects in the Git history by defining regular expressions (one per line) in a file to match the targeted object paths.</p>
@@ -1581,7 +1581,7 @@ if you want to just run the trufflehog command with NO arguments, set as a singl
 exclude-patterns.txt
 These filter files could then be applied.</p>
 <p>trufflehog --include_paths include-patterns.txt --exclude_paths exclude-patterns.txt file://path/to/my/repo.git</p>
-<h3 id="how-to-integrate">How to integrate?</h3>
+<h3 id="how-to-integrate">How to integrate?<a class="headerlink" href="#how-to-integrate" title="Permanent link">&para;</a></h3>
 <p>General approach : Platform independent CI integration-</p>
 <p>Option 1: Trufflehog Binary(Enterprise Scan)(Recommended)</p>
 <p>You can run Trufflehog Enterprise Scan with Trufflehog Binary using the below command-</p>
@@ -1592,7 +1592,7 @@ These filter files could then be applied.</p>
 <p>./trufflehog – does the actual scanning</p>
 <p>--fail-verified- Only emit failure code for verified findings.</p>
 <p>TruffleHog will return a non-zero exit code if there are findings.</p>
-<h3 id="azure-devops-pipeline-integration">Azure DevOps pipeline Integration</h3>
+<h3 id="azure-devops-pipeline-integration">Azure DevOps pipeline Integration<a class="headerlink" href="#azure-devops-pipeline-integration" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code>trigger:
 - &#39;develop&#39;
 
@@ -1619,7 +1619,7 @@ steps:
 
 Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
 </code></pre></div>
-<h3 id="github-actions-pipeline-integration-">Github Actions pipeline Integration-</h3>
+<h3 id="github-actions-pipeline-integration-">Github Actions pipeline Integration-<a class="headerlink" href="#github-actions-pipeline-integration-" title="Permanent link">&para;</a></h3>
 <div class="language-text highlight"><pre><span></span><code>steps:
     - uses: actions/checkout@v1
     - name: trufflehog scanning
@@ -1664,7 +1664,7 @@ jobs:
 
 Note : In the place of (ApplicationName) in the curl command Mention the Application name which is to be integrated
 </code></pre></div>
-<h3 id="references">References</h3>
+<h3 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h3>
 <p>https://docs.trufflesecurity.com/docs/scanning-git/scanning-in-ci/</p>
 <p>https://github.com/trufflesecurity/trufflehog</p>
 <p>Contact the team for any clarification- dl-appsecteam@marks-and-spencer.com</p>
