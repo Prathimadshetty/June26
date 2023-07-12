@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dast-onboarding-and-integration" class="md-skip">
+        <a href="#tool-onboarding" class="md-skip">
           Skip to content
         </a>
       
@@ -883,36 +883,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dast-onboarding-and-integration" class="md-nav__link">
-    DAST onboarding and Integration
-  </a>
-  
-    <nav class="md-nav" aria-label="DAST onboarding and Integration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#tool-onboarding" class="md-nav__link">
     Tool onboarding
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#integration" class="md-nav__link">
     Integration
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#architecture" class="md-nav__link">
     Architecture
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1307,36 +1294,23 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dast-onboarding-and-integration" class="md-nav__link">
-    DAST onboarding and Integration
-  </a>
-  
-    <nav class="md-nav" aria-label="DAST onboarding and Integration">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#tool-onboarding" class="md-nav__link">
     Tool onboarding
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#integration" class="md-nav__link">
     Integration
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#architecture" class="md-nav__link">
     Architecture
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1357,8 +1331,7 @@
 
   <h1>DAST Tool and Onboarding Approach</h1>
 
-<h2 id="dast-onboarding-and-integration">DAST onboarding and Integration<a class="headerlink" href="#dast-onboarding-and-integration" title="Permanent link">&para;</a></h2>
-<p>FOD is being used for DAST.</p>
+<p>AT M&amp;S we use Fortify on Demand(FOD) for DAST.</p>
 <h4 id="tool-onboarding">Tool onboarding<a class="headerlink" href="#tool-onboarding" title="Permanent link">&para;</a></h4>
 <p>For onboarding applications for FOD DAST, below Prerequisites are required - </p>
 <p>If it’s website, please share the below details for DAST-
@@ -1389,6 +1362,7 @@ if it’s a webservice  please share the below details
                    entitlementID=$( echo &quot;$scan_details&quot; | jq &#39;.entitlementId&#39;)
                    curl -X POST --header &#39;Content-Type: application/json&#39; --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} -d &#39;{&quot;startDate&quot;: &quot;2022-0820T05:35:23.645Z&quot;, &quot;assessmentTypeId&quot;: ${assessmenttypeID}, &quot;entitlementId&quot;: ${entitlementID}, &quot;entitlementFrequencyType&quot;: &quot;Subscription&quot;, &quot;isRemediationScan&quot;: false, &quot;isBundledAssessment&quot;: false, &quot;parentAssessmentTypeId&quot;: 0, &quot;applyPreviousScanSettings&quot;: false, &quot;scanMethodType&quot;: &quot;IDE&quot;, &quot;scanTool&quot;: &quot;string&quot;, &quot;scanToolVersion&quot;: &quot;string&quot;}&#39; &#39;https://api.emea.fortify.com/api/v3/releases/9516/dynamic-scans/start-scan&#39;
 </code></pre></div>
+<p>Note- DAST integration should be at CD phase.</p>
 <h4 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h4>
 
 
