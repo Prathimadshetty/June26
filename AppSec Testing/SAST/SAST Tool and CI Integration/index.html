@@ -1443,11 +1443,11 @@
 
   <h1>SAST Tool and CI Integration</h1>
 
-<p>At M&amp;S Fortify On Demand(FOD) is being used for Static Application Security Testing (SAST). </p>
+<div><p>At M&amp;S Fortify On Demand(FOD) is being used for Static Application Security Testing (SAST). </p>
 <p>Fortify On Demand Analyzes the Source code for Application security vulnerabilities.
 Static Application Security Testing (SAST) can be integrated to CI/CD to trigger scan when a build process is initiated</p>
-<h3 id="integration-steps">Integration steps:<a class="headerlink" href="#integration-steps" title="Permanent link">&para;</a></h3>
-<h4 id="azure-devops">Azure Devops:<a class="headerlink" href="#azure-devops" title="Permanent link">&para;</a></h4>
+<h3 id="integration-steps">Integration steps:<a class="headerlink" href="#integration-steps" title="Permanent link">¶</a></h3>
+<h4 id="azure-devops">Azure Devops:<a class="headerlink" href="#azure-devops" title="Permanent link">¶</a></h4>
 <p>Step 1: Store GitHub Username, Personal Access Token  and API_KEY and API_SECRET in Azure Keyvault.</p>
 <p>Step 2: Create a Pipeline.yml with following code</p>
 <div class="language-text highlight"><pre><span></span><code># Starter pipeline
@@ -1467,7 +1467,7 @@ jobs:
 ​
   - task: Bash@3
     inputs:
-      targetType: &#39;inline&#39;
+      targetType: 'inline'
       script: |
         wget -c https://github.com/fod-dev/fod-uploader-java/releases/download/v5.4.0/FodUpload.jar
         pwd
@@ -1475,52 +1475,52 @@ jobs:
 
   - task: Bash@3
     inputs:
-      targetType: &#39;inline&#39;
+      targetType: 'inline'
       script: |
         apt install zip
-        zip -r &#39;WebGoat-develop.zip&#39; .
+        zip -r 'WebGoat-develop.zip' .
 
   - task: AzureKeyVault@1
     inputs:
-      azureSubscription: &#39;AzureResourceManager&#39;
-      KeyVaultName: &#39;cicd-v2-shared-kv&#39;
-      SecretsFilter: &#39;*&#39;
+      azureSubscription: 'AzureResourceManager'
+      KeyVaultName: 'cicd-v2-shared-kv'
+      SecretsFilter: '*'
       RunAsPreJob: false
   - task: Bash@3
     inputs:
-      targetType: &#39;inline&#39;
+      targetType: 'inline'
       script: |
         java -jar FodUpload.jar -ac $(FOD-API-KEY) $(FOD-API-SECRET) -rid $(RELEASE-ID) -purl $(FOD-PORTAL-URL) -apiurl $(FOD-API-URL) -z WebGoat-develop.zip -ep 2 -rp 0 -pp 1 -apf -I 1
-    displayName: &#39;FOD SAST Scan&#39;
+    displayName: 'FOD SAST Scan'
 
   - task: Bash@3
     inputs:
-      targetType: &#39;inline&#39;
+      targetType: 'inline'
       script: |
-             auth=$(curl -X POST --header &#39;Content-Type: application/x-www-form-urlencoded&#39; --header &#39;Connection: close&#39; -d &#39;grant_type=client_credentials&amp;scope=api-tenant&amp;client_id=$(FOD-API-KEY)&amp;client_secret=$(FOD-API-SECRET)&#39; &#39;https://api.emea.fortify.com/oauth/token&#39;)
-             tok3n=$( echo &quot;$auth&quot; | jq &#39;.[&quot;access_token&quot;]&#39; )
-             tok3n=&quot;${tok3n:1:-1}&quot;
-             releasedetails=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/releases/&#39;$(RELEASE-ID))
-             scanid=$( echo &quot;$releasedetails&quot; | jq .currentStaticScanId )
-             applicationname=$( echo &quot;$releasedetails&quot; | jq .applicationName | sed &#39;s/[&quot;]//g&#39;)
-             scanSummary=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/scans/&#39;${scanid}&#39;/summary&#39;)
-             CRITICAL=$( echo &quot;$releasedetails&quot; | jq .staticCritical )
-             HIGH=$( echo &quot;$releasedetails&quot; | jq .staticHigh )
+             auth=$(curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Connection: close' -d 'grant_type=client_credentials&amp;scope=api-tenant&amp;client_id=$(FOD-API-KEY)&amp;client_secret=$(FOD-API-SECRET)' 'https://api.emea.fortify.com/oauth/token')
+             tok3n=$( echo "$auth" | jq '.["access_token"]' )
+             tok3n="${tok3n:1:-1}"
+             releasedetails=$(curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer '${tok3n} 'https://api.emea.fortify.com/api/v3/releases/'$(RELEASE-ID))
+             scanid=$( echo "$releasedetails" | jq .currentStaticScanId )
+             applicationname=$( echo "$releasedetails" | jq .applicationName | sed 's/["]//g')
+             scanSummary=$(curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer '${tok3n} 'https://api.emea.fortify.com/api/v3/scans/'${scanid}'/summary')
+             CRITICAL=$( echo "$releasedetails" | jq .staticCritical )
+             HIGH=$( echo "$releasedetails" | jq .staticHigh )
              if [ $CRITICAL -gt 0 ]
              then
-               echo &quot;##[error]Application has critical Issues&quot;
-               curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Pipeline had warnings because critical issues in FoD SAST are present for &#39;$applicationname&#39;&quot;}&#39; $(teams_webhook)
+               echo "##[error]Application has critical Issues"
+               curl -H 'Content-Type: application/json' -d '{"text": "Pipeline had warnings because critical issues in FoD SAST are present for '$applicationname'"}' $(teams_webhook)
                #exit 1
              elif [ $HIGH -gt 0 ]
              then
-               echo &quot;##[error]Application has High Issues&quot;
-               curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Pipeline had warnings because high issues in FoD SAST are present for &#39;$applicationname&#39;&quot;}&#39; $(teams_webhook)
+               echo "##[error]Application has High Issues"
+               curl -H 'Content-Type: application/json' -d '{"text": "Pipeline had warnings because high issues in FoD SAST are present for '$applicationname'"}' $(teams_webhook)
                #exit 1
              else
-               echo &quot;PASSED&quot;
+               echo "PASSED"
              fi
     continueOnError: true           
-    displayName: &#39;FOD Security Gating&#39;
+    displayName: 'FOD Security Gating'
 </code></pre></div>
 <p>FOD-PORTAL-URL - https://emea.fortify.com/</p>
 <p>FOD-API-URL   -   https://api.emea.fortify.com/</p>
@@ -1531,7 +1531,7 @@ jobs:
 <p>IMAGE</p>
 <p>To Resolve or Validate security vulnerabilities:-</p>
 <p>To validate or Resolve any security vulnerabilities after scanning the code in any CI/CD pipeline. Open that Application in Fortify on demand portal and check the last build run details. It will explain about each vulnerabilities clearly.</p>
-<h4 id="github-actions">Github Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h4>
+<h4 id="github-actions">Github Actions<a class="headerlink" href="#github-actions" title="Permanent link">¶</a></h4>
 <div class="language-text highlight"><pre><span></span><code>Fortify:
     runs-on: ubuntu-latest
     steps:
@@ -1544,32 +1544,32 @@ jobs:
 
       - name: FOD Security Gating
         run: |
-          auth=$(curl -X POST --header &#39;Content-Type: application/x-www-form-urlencoded&#39; --header &#39;Connection: close&#39; -d &#39;grant_type=client_credentials&amp;scope=api-tenant&amp;client_id=${{secrets.FOD_API_KEY}}&amp;client_secret=${{secrets.FOD_API_SECRET}}&#39; &#39;https://api.emea.fortify.com/oauth/token&#39;)
-          tok3n=$( echo &quot;$auth&quot; | jq &#39;.[&quot;access_token&quot;]&#39; )
-          tok3n=&quot;${tok3n:1:-1}&quot;
-          releasedetails=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/releases/&#39;${{secrets.FOD_RELEASE_ID}})
-          scanid=$( echo &quot;$releasedetails&quot; | jq .currentStaticScanId )
-          applicationname=$( echo &quot;$releasedetails&quot; | jq .applicationName | sed &#39;s/[&quot;]//g&#39;)
-          scanSummary=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/scans/&#39;${scanid}&#39;/summary&#39;)
-          CRITICAL=$( echo &quot;$releasedetails&quot; | jq .staticCritical )
-          HIGH=$( echo &quot;$releasedetails&quot; | jq .staticHigh )
+          auth=$(curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Connection: close' -d 'grant_type=client_credentials&amp;scope=api-tenant&amp;client_id=${{secrets.FOD_API_KEY}}&amp;client_secret=${{secrets.FOD_API_SECRET}}' 'https://api.emea.fortify.com/oauth/token')
+          tok3n=$( echo "$auth" | jq '.["access_token"]' )
+          tok3n="${tok3n:1:-1}"
+          releasedetails=$(curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer '${tok3n} 'https://api.emea.fortify.com/api/v3/releases/'${{secrets.FOD_RELEASE_ID}})
+          scanid=$( echo "$releasedetails" | jq .currentStaticScanId )
+          applicationname=$( echo "$releasedetails" | jq .applicationName | sed 's/["]//g')
+          scanSummary=$(curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer '${tok3n} 'https://api.emea.fortify.com/api/v3/scans/'${scanid}'/summary')
+          CRITICAL=$( echo "$releasedetails" | jq .staticCritical )
+          HIGH=$( echo "$releasedetails" | jq .staticHigh )
           if [ $CRITICAL -gt 0 ]
           then
-            echo &quot;##[error]Application has critical Issues&quot;          
-            curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Application has critical Issues in FOD&quot;}&#39; ${{secrets.TEAMS_WEBHOOK}}          
+            echo "##[error]Application has critical Issues"          
+            curl -H 'Content-Type: application/json' -d '{"text": "Application has critical Issues in FOD"}' ${{secrets.TEAMS_WEBHOOK}}          
             #exit 1
           elif [ $HIGH -gt 0 ]
           then
-            echo &quot;##[error]Application has High Issues&quot;
-            curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Application has high Issues in FOD&quot;}&#39; ${{secrets.TEAMS_WEBHOOK}}
+            echo "##[error]Application has High Issues"
+            curl -H 'Content-Type: application/json' -d '{"text": "Application has high Issues in FOD"}' ${{secrets.TEAMS_WEBHOOK}}
             #exit 1
           else
-            echo &quot;PASSED&quot;
+            echo "PASSED"
           fi
         continue-on-error: true
 </code></pre></div>
 <p>Note: To enforce security gating in block mode please uncomment exit code 1.</p>
-<h4 id="jenkins">Jenkins<a class="headerlink" href="#jenkins" title="Permanent link">&para;</a></h4>
+<h4 id="jenkins">Jenkins<a class="headerlink" href="#jenkins" title="Permanent link">¶</a></h4>
 <p>Step 1:  Store GitHub username and personal access token in Jenkins credentials.​​​​​​​</p>
 <p>Step 2:  Store API key, API secret in key vault credentials.</p>
 <p>Step 3: create a Jenkins pipeline and use the following code.</p>
@@ -1578,52 +1578,52 @@ jobs:
 
     stages {
 
-        stage(&#39;Git Checkout&#39;){
+        stage('Git Checkout'){
             steps {
-                checkout([$class: &#39;GitSCM&#39;, branches: [[name: &#39;&lt;Github_branchname&gt;&#39;]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: &#39;&lt;Github_credentials&gt;&#39;, url: &#39;&lt;Github_URL&gt;&#39;]]])
+                checkout([$class: 'GitSCM', branches: [[name: '&lt;Github_branchname&gt;']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: '&lt;Github_credentials&gt;', url: '&lt;Github_URL&gt;']]])
                 }
             }
 
-        stage(&#39;ZIP directory to be uploaded or unzip something&#39;) {
+        stage('ZIP directory to be uploaded or unzip something') {
             agent {
                 docker {
-                    image &#39;javieraviles/zip&#39;
+                    image 'javieraviles/zip'
                     reuseNode true
                 }
             }
             steps {
-                echo &quot;Creating zip file...&quot;
+                echo "Creating zip file..."
 
-                sh &quot;zip -r &#39;WebGoat-develop.zip&#39; &#39;&lt;Jenkins path where all the github files were downloaded&gt;&#39;&quot;
+                sh "zip -r 'WebGoat-develop.zip' '&lt;Jenkins path where all the github files were downloaded&gt;'"
             }
             }
-        stage(&#39;Downloading the FOD jar file from Github&#39;){
+        stage('Downloading the FOD jar file from Github'){
             steps{
-                sh &#39;wget -c https://github.com/fod-dev/fod-uploader-java/releases/download/v5.4.0/FodUpload.jar&#39;
+                sh 'wget -c https://github.com/fod-dev/fod-uploader-java/releases/download/v5.4.0/FodUpload.jar'
                 }
                 }
-        stage(&#39;Retrieve keyvault credentials and Upload the ZIP file to FOD using jar&#39;){
+        stage('Retrieve keyvault credentials and Upload the ZIP file to FOD using jar'){
 
             options{
 
                 azureKeyVault(
 
-                    credentialID: &#39;&lt;Servicepriciple_credentials&gt;&#39;,
+                    credentialID: '&lt;Servicepriciple_credentials&gt;',
 ​
-                    keyVaultURL: &#39;&lt;Keyvault_url&gt;&#39;,
+                    keyVaultURL: '&lt;Keyvault_url&gt;',
 
                     secrets: [
 
-                        [envVariable: &#39;API_KEY_FOD&#39;, name: &#39;FOD-API-KEY-Test&#39;, secretType: &#39;Secret&#39;],
-                        [envVariable: &#39;API_SECRET_FOD&#39;, name: &#39;FOD-API-SECRET-Test&#39;, secretType: &#39;Secret&#39;]
+                        [envVariable: 'API_KEY_FOD', name: 'FOD-API-KEY-Test', secretType: 'Secret'],
+                        [envVariable: 'API_SECRET_FOD', name: 'FOD-API-SECRET-Test', secretType: 'Secret']
 
                         ]
                         )
                         }
                             steps{
-                                sh &#39;java -version&#39;
+                                sh 'java -version'
 
-                                sh &#39;java -jar FodUpload.jar -ac $API_KEY_FOD $API_SECRET_FOD -rid 6560 -purl https://emea.fortify.com/ -apiurl                                       https://api.emea.fortify.com/ -z WebGoat-develop.zip -ep 2 -rp 0 -pp 1 -apf -I 1&#39;
+                                sh 'java -jar FodUpload.jar -ac $API_KEY_FOD $API_SECRET_FOD -rid 6560 -purl https://emea.fortify.com/ -apiurl                                       https://api.emea.fortify.com/ -z WebGoat-develop.zip -ep 2 -rp 0 -pp 1 -apf -I 1'
 
                                 }
                                 }
@@ -1643,7 +1643,7 @@ jobs:
 <p>Sample output:</p>
 <p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities Please refer the below screenshot</p>
 <p>IMAGE</p>
-<h4 id="concourse-ci">Concourse CI:<a class="headerlink" href="#concourse-ci" title="Permanent link">&para;</a></h4>
+<h4 id="concourse-ci">Concourse CI:<a class="headerlink" href="#concourse-ci" title="Permanent link">¶</a></h4>
 <p>Step 1: Store GitHub Username, Personal Access Token  and API_KEY and API_SECRET in Hashicorp Vault.</p>
 <p>Step 2: Create a Pipeline.yml with following code</p>
 <div class="language-text highlight"><pre><span></span><code>resources:
@@ -1666,7 +1666,7 @@ jobs:
           platform: linux
           image_resource:
             type: registry-image
-            source: { repository: ubuntu, tag: &quot;latest&quot; }
+            source: { repository: ubuntu, tag: "latest" }
           params:
             FOD_API_KEY: ((API_CRED.FOD_API_KEY))
             FOD_API_SECRET: ((API_CRED.FOD_API_SECRET))
@@ -1678,14 +1678,14 @@ jobs:
               - -c
               - |
                 apt-get update
-                echo &quot;--------install java------&quot;               
-                apt-get update &amp;&amp; DEBIAN_FRONTEND=&quot;noninteractive&quot; TZ=&quot;Asia/india&quot; apt-get install -y tzdata
+                echo "--------install java------"               
+                apt-get update &amp;&amp; DEBIAN_FRONTEND="noninteractive" TZ="Asia/india" apt-get install -y tzdata
                 apt-get -y install openjdk-11-jre               
-                echo &quot;-------install zip----&quot;
+                echo "-------install zip----"
                 apt-get -y install zip
-                echo &quot;-----install wget------&quot;
+                echo "-----install wget------"
                 apt-get -y install wget
-                echo &quot;java --version&quot;
+                echo "java --version"
                 cd source-code
                 zip -r uploadsourc.zip . -i /*.*
                 wget -c https://github.com/fod-dev/fod-uploader-java/releases/download/v5.4.0/FodUpload.jar
@@ -1699,7 +1699,7 @@ For steps to create a secret keys in HC Vault, refer here.</p>
 <p>Sample Output:-</p>
 <p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities Please refer the below screenshot</p>
 <p>IMAGE</p>
-<h3 id="product-features">Product Features<a class="headerlink" href="#product-features" title="Permanent link">&para;</a></h3>
+<h3 id="product-features">Product Features<a class="headerlink" href="#product-features" title="Permanent link">¶</a></h3>
 <ul>
 <li>Fortify on Demand gives you the tools to create, supplement, and expand a Software Security Assurance program with no infrastructure investments or security staff required.</li>
 <li>Fortify on Demand is the only application security provider to offer static application security testing (SAST), dynamic application security testing (DAST), and mobile application testing (MAST) on demand so you can choose the solution that’s right for your business.</li>
@@ -1707,8 +1707,8 @@ For steps to create a secret keys in HC Vault, refer here.</p>
 <li>Fortify on Demand gives developers the tools to write secure code and optimize application security at every step of the software development cycle.</li>
 <li>Fortify on Demand is a comprehensive platform designed with helpdesk ticketing available 24x7 through a dedicated support team.x-www-</li>
 </ul>
-<h4 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h4>
-<p>IMAGE</p>
+<h4 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">¶</a></h4>
+<p>IMAGE</p></div>
 
 
 

@@ -1363,12 +1363,12 @@
 
   <h1>DAST Tool and Onboarding Approach</h1>
 
-<p>AT M&amp;S we use Fortify on Demand(FOD) for DAST.</p>
+<div><p>AT M&amp;S we use Fortify on Demand(FOD) for DAST.</p>
 <ul>
 <li>FOD can test for various application security vulnerabilities like SQL Injection, XSS etc. when application is up and running</li>
 <li>FOD DAST can be integrated to CI/CD tool to trigger automatic scans before deploying into production.</li>
 </ul>
-<h4 id="tool-onboarding">Tool onboarding<a class="headerlink" href="#tool-onboarding" title="Permanent link">&para;</a></h4>
+<h4 id="tool-onboarding">Tool onboarding<a class="headerlink" href="#tool-onboarding" title="Permanent link">¶</a></h4>
 <p>For onboarding applications for FOD DAST, below Prerequisites are required - </p>
 <p>If it’s website, please share the below details for DAST-</p>
 <ul>
@@ -1387,23 +1387,23 @@ if it’s a webservice  please share the below details</p>
 <li>Appsec team will test whether the postman collection provided is working fine. The Api must give ideal response while sending it from our end</li>
 </ul>
 <p>Post receiving the above details from the application team Appsec shall onboard the application for DAST and share the report.</p>
-<h4 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">&para;</a></h4>
+<h4 id="integration">Integration<a class="headerlink" href="#integration" title="Permanent link">¶</a></h4>
 <p>Step 1: Store GitHub Username, Personal Access Token and API_KEY and API_SECRET in Keyvault.</p>
 <p>Step 2: Create a Pipeline.yml with following code</p>
 <div class="language-text highlight"><pre><span></span><code>task: Bash@3
   inputs:
-    targetType: &#39;inline&#39;
+    targetType: 'inline'
     script: |
-      auth=$(curl -X POST --header &#39;Content-Type: application/x-www-form-urlencoded&#39; --header &#39;Connection: close&#39; -d &#39;grant_type=client_credentials&amp;scope=api-tenant&amp;client_id=$(FOD-API-KEY)&amp;client_secret=$(FOD-SECRET)&#39; &#39;https://emea.fortify.com/oauth/token&#39;)
-                   tok3n=$( echo &quot;$auth&quot; | jq &#39;.[&quot;access_token&quot;]&#39; )
-                   tok3n=&quot;${tok3n:1:-1}&quot;
-                   scan_details=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/releases/9516/dynamic-scans/scan-setup&#39;)
-                   assessmenttypeID=$( echo &quot;$scan_details&quot; | jq &#39;.assessmentTypeId&#39;)
-                   entitlementID=$( echo &quot;$scan_details&quot; | jq &#39;.entitlementId&#39;)
-                   curl -X POST --header &#39;Content-Type: application/json&#39; --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} -d &#39;{&quot;startDate&quot;: &quot;2022-0820T05:35:23.645Z&quot;, &quot;assessmentTypeId&quot;: ${assessmenttypeID}, &quot;entitlementId&quot;: ${entitlementID}, &quot;entitlementFrequencyType&quot;: &quot;Subscription&quot;, &quot;isRemediationScan&quot;: false, &quot;isBundledAssessment&quot;: false, &quot;parentAssessmentTypeId&quot;: 0, &quot;applyPreviousScanSettings&quot;: false, &quot;scanMethodType&quot;: &quot;IDE&quot;, &quot;scanTool&quot;: &quot;string&quot;, &quot;scanToolVersion&quot;: &quot;string&quot;}&#39; &#39;https://api.emea.fortify.com/api/v3/releases/9516/dynamic-scans/start-scan&#39;
+      auth=$(curl -X POST --header 'Content-Type: application/x-www-form-urlencoded' --header 'Connection: close' -d 'grant_type=client_credentials&amp;scope=api-tenant&amp;client_id=$(FOD-API-KEY)&amp;client_secret=$(FOD-SECRET)' 'https://emea.fortify.com/oauth/token')
+                   tok3n=$( echo "$auth" | jq '.["access_token"]' )
+                   tok3n="${tok3n:1:-1}"
+                   scan_details=$(curl -X GET --header 'Accept: application/json' --header 'Authorization: Bearer '${tok3n} 'https://api.emea.fortify.com/api/v3/releases/9516/dynamic-scans/scan-setup')
+                   assessmenttypeID=$( echo "$scan_details" | jq '.assessmentTypeId')
+                   entitlementID=$( echo "$scan_details" | jq '.entitlementId')
+                   curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'Authorization: Bearer '${tok3n} -d '{"startDate": "2022-0820T05:35:23.645Z", "assessmentTypeId": ${assessmenttypeID}, "entitlementId": ${entitlementID}, "entitlementFrequencyType": "Subscription", "isRemediationScan": false, "isBundledAssessment": false, "parentAssessmentTypeId": 0, "applyPreviousScanSettings": false, "scanMethodType": "IDE", "scanTool": "string", "scanToolVersion": "string"}' 'https://api.emea.fortify.com/api/v3/releases/9516/dynamic-scans/start-scan'
 </code></pre></div>
 <p>Note- DAST integration should be at CD phase.</p>
-<h4 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h4>
+<h4 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">¶</a></h4></div>
 
 
 
