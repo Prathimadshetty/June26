@@ -9,24 +9,24 @@
       
       
       
-        <link rel="prev" href="../Security%20Design/Security%20Checklist/Web%20Service/">
+        <link rel="prev" href="../Snyk%20Code%20SAST%20-%20IDE%20Plugin/">
       
       
-        <link rel="next" href="ToolsAndServices/">
+        <link rel="next" href="../../Secret%20Scanning/">
       
-      <link rel="icon" href="../Logo/M&S-Logo.svg">
+      <link rel="icon" href="../../../Logo/M&S-Logo.svg">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
-        <title>Application Testing - Application Security</title>
+        <title>Snyk Code SAST Tool and CI Integration - Application Security</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.ecc896b0.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
       
       
 
@@ -42,14 +42,14 @@
       
     
     
-    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -60,7 +60,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#application-testing" class="md-skip">
+        <a href="#integration-steps" class="md-skip">
           Skip to content
         </a>
       
@@ -102,9 +102,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Application Security" class="md-header__button md-logo" aria-label="Application Security" data-md-component="logo">
+    <a href="../../.." title="Application Security" class="md-header__button md-logo" aria-label="Application Security" data-md-component="logo">
       
-  <img src="../Logo/MS-Logo.png" alt="logo">
+  <img src="../../../Logo/MS-Logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Application Testing
+              Snyk Code SAST Tool and CI Integration
             
           </span>
         </div>
@@ -203,7 +203,7 @@
 
 
   <li class="md-tabs__item">
-    <a href=".." class="md-tabs__link">
+    <a href="../../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -218,7 +218,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../SSDLC/" class="md-tabs__link">
+      <a href="../../../SSDLC/" class="md-tabs__link">
         SSDLC
       </a>
     </li>
@@ -234,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../Security%20Design/" class="md-tabs__link">
+      <a href="../../../Security%20Design/" class="md-tabs__link">
         Security Design
       </a>
     </li>
@@ -252,7 +252,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="./" class="md-tabs__link md-tabs__link--active">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
         AppSec Testing
       </a>
     </li>
@@ -268,7 +268,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../Awareness/" class="md-tabs__link">
+      <a href="../../../Awareness/" class="md-tabs__link">
         Awareness
       </a>
     </li>
@@ -284,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../Contact/" class="md-tabs__link">
+      <a href="../../../Contact/" class="md-tabs__link">
         Contact
       </a>
     </li>
@@ -318,9 +318,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Application Security" class="md-nav__button md-logo" aria-label="Application Security" data-md-component="logo">
+    <a href="../../.." title="Application Security" class="md-nav__button md-logo" aria-label="Application Security" data-md-component="logo">
       
-  <img src="../Logo/MS-Logo.png" alt="logo">
+  <img src="../../../Logo/MS-Logo.png" alt="logo">
 
     </a>
     Application Security
@@ -336,7 +336,7 @@
   
   
     <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -371,7 +371,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../SSDLC/">SSDLC</a>
+          <a href="../../../SSDLC/">SSDLC</a>
           
         </div>
       
@@ -422,7 +422,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../Security%20Design/">Security Design</a>
+          <a href="../../../Security%20Design/">Security Design</a>
           
             <label for="__nav_3">
               <span class="md-nav__icon md-icon"></span>
@@ -445,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/TM/" class="md-nav__link">
+      <a href="../../../Security%20Design/TM/" class="md-nav__link">
         TM
       </a>
     </li>
@@ -507,7 +507,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../Security%20Design/Security%20Checklist/">Security Checklist</a>
+          <a href="../../../Security%20Design/Security%20Checklist/">Security Checklist</a>
           
             <label for="__nav_3_3">
               <span class="md-nav__icon md-icon"></span>
@@ -530,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Access%20Control/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Access%20Control/" class="md-nav__link">
         Access Control
       </a>
     </li>
@@ -544,7 +544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Architecture/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Architecture/" class="md-nav__link">
         Architecture
       </a>
     </li>
@@ -558,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Authentication/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Authentication/" class="md-nav__link">
         Authentication
       </a>
     </li>
@@ -572,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Business%20Logic/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Business%20Logic/" class="md-nav__link">
         Business Logic
       </a>
     </li>
@@ -586,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Communication%20Security/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Communication%20Security/" class="md-nav__link">
         Communication Security
       </a>
     </li>
@@ -600,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Configuration%20and%20Operations/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Configuration%20and%20Operations/" class="md-nav__link">
         Configuration and Operations
       </a>
     </li>
@@ -614,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Cryptography/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Cryptography/" class="md-nav__link">
         Cryptography
       </a>
     </li>
@@ -628,7 +628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Data%20Protection/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Data%20Protection/" class="md-nav__link">
         Data Protection
       </a>
     </li>
@@ -642,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Error%20Handling%20and%20Logging/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Error%20Handling%20and%20Logging/" class="md-nav__link">
         Error Handling and Logging
       </a>
     </li>
@@ -656,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Files%20and%20Resources/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Files%20and%20Resources/" class="md-nav__link">
         Files and Resources
       </a>
     </li>
@@ -670,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Input%20and%20Output%20Validation/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Input%20and%20Output%20Validation/" class="md-nav__link">
         Input and Output Validation
       </a>
     </li>
@@ -684,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Malicious%20Code/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Malicious%20Code/" class="md-nav__link">
         Malicious Code
       </a>
     </li>
@@ -698,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Session%20Management/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Session%20Management/" class="md-nav__link">
         Session Management
       </a>
     </li>
@@ -712,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Security%20Design/Security%20Checklist/Web%20Service/" class="md-nav__link">
+      <a href="../../../Security%20Design/Security%20Checklist/Web%20Service/" class="md-nav__link">
         Web Service
       </a>
     </li>
@@ -770,8 +770,8 @@
       
         
         
-        <div class="md-nav__link md-nav__link--index md-nav__link--active">
-          <a href="./">AppSec Testing</a>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">AppSec Testing</a>
           
             <label for="__nav_4">
               <span class="md-nav__icon md-icon"></span>
@@ -794,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="ToolsAndServices/" class="md-nav__link">
+      <a href="../../ToolsAndServices/" class="md-nav__link">
         AppSec Tools and Services
       </a>
     </li>
@@ -830,7 +830,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="DAST/">DAST</a>
+          <a href="../../DAST/">DAST</a>
           
             <label for="__nav_4_3">
               <span class="md-nav__icon md-icon"></span>
@@ -853,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="DAST/DAST%20Tool%20and%20Onboarding%20Approach/" class="md-nav__link">
+      <a href="../../DAST/DAST%20Tool%20and%20Onboarding%20Approach/" class="md-nav__link">
         DAST Tool and Onboarding Approach
       </a>
     </li>
@@ -872,16 +872,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-        
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
       
       
         
@@ -902,7 +902,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="SAST/">SAST</a>
+          <a href="../">SAST</a>
           
             <label for="__nav_4_4">
               <span class="md-nav__icon md-icon"></span>
@@ -910,7 +910,7 @@
           
         </div>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           SAST
@@ -925,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="SAST/SAST%20-%20IDE%20Plugin/" class="md-nav__link">
+      <a href="../SAST%20-%20IDE%20Plugin/" class="md-nav__link">
         SAST   IDE Plugin
       </a>
     </li>
@@ -939,7 +939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="SAST/SAST%20Tool%20and%20CI%20Integration/" class="md-nav__link">
+      <a href="../SAST%20Tool%20and%20CI%20Integration/" class="md-nav__link">
         SAST Tool and CI Integration
       </a>
     </li>
@@ -953,7 +953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="SAST/Snyk%20Code%20SAST%20-%20IDE%20Plugin/" class="md-nav__link">
+      <a href="../Snyk%20Code%20SAST%20-%20IDE%20Plugin/" class="md-nav__link">
         Snyk Code SAST   IDE Plugin
       </a>
     </li>
@@ -965,11 +965,102 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="SAST/Snyk%20Code%20SAST%20Tool%20and%20CI%20Integration/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Snyk Code SAST Tool and CI Integration
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Snyk Code SAST Tool and CI Integration
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#integration-steps" class="md-nav__link">
+    Integration steps:
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration steps:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-devops" class="md-nav__link">
+    Azure Devops:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    Github Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jenkins" class="md-nav__link">
+    Jenkins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concourse-ci" class="md-nav__link">
+    Concourse CI:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-features" class="md-nav__link">
+    Product Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    Architecture
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1010,7 +1101,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="Secret%20Scanning/">Secret Scanning</a>
+          <a href="../../Secret%20Scanning/">Secret Scanning</a>
           
             <label for="__nav_4_5">
               <span class="md-nav__icon md-icon"></span>
@@ -1033,7 +1124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Secret%20Scanning/Secret%20Scanning%20Tool%20Integration/" class="md-nav__link">
+      <a href="../../Secret%20Scanning/Secret%20Scanning%20Tool%20Integration/" class="md-nav__link">
         Secret Scanning Tool and CI Integration
       </a>
     </li>
@@ -1076,7 +1167,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="Software%20Composition%20Analysis/">Software Composition Analysis</a>
+          <a href="../../Software%20Composition%20Analysis/">Software Composition Analysis</a>
           
             <label for="__nav_4_6">
               <span class="md-nav__icon md-icon"></span>
@@ -1099,7 +1190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Software%20Composition%20Analysis/SCA%20Tool%20and%20CI%20Integration/" class="md-nav__link">
+      <a href="../../Software%20Composition%20Analysis/SCA%20Tool%20and%20CI%20Integration/" class="md-nav__link">
         SCA Tool and CI Integration
       </a>
     </li>
@@ -1152,7 +1243,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../Awareness/">Awareness</a>
+          <a href="../../../Awareness/">Awareness</a>
           
             <label for="__nav_5">
               <span class="md-nav__icon md-icon"></span>
@@ -1175,7 +1266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Awareness/ImmersiveLabs/" class="md-nav__link">
+      <a href="../../../Awareness/ImmersiveLabs/" class="md-nav__link">
         ImmersiveLabs
       </a>
     </li>
@@ -1189,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Awareness/SKF/" class="md-nav__link">
+      <a href="../../../Awareness/SKF/" class="md-nav__link">
         Security Knoweldge Framework(SKF)
       </a>
     </li>
@@ -1231,7 +1322,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../Contact/">Contact</a>
+          <a href="../../../Contact/">Contact</a>
           
         </div>
       
@@ -1267,8 +1358,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1277,9 +1366,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#capabilities" class="md-nav__link">
-    Capabilities
+  <a href="#integration-steps" class="md-nav__link">
+    Integration steps:
   </a>
+  
+    <nav class="md-nav" aria-label="Integration steps:">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#azure-devops" class="md-nav__link">
+    Azure Devops:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#github-actions" class="md-nav__link">
+    Github Actions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jenkins" class="md-nav__link">
+    Jenkins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concourse-ci" class="md-nav__link">
+    Concourse CI:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#product-features" class="md-nav__link">
+    Product Features
+  </a>
+  
+    <nav class="md-nav" aria-label="Product Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    Architecture
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1298,24 +1441,274 @@
                   
 
 
-<h1 id="application-testing">Application Testing<a class="headerlink" href="#application-testing" title="Permanent link">&para;</a></h1>
-<p>Application security testing is the process of analysing, testing, and reporting security vulnerabilities associated with the applications. It helps M&amp;S address the threats by using secure development practices throughout the complete life cycle process. Also, it makes sure that design-level flaws and implementation level bugs go identified and addressed promptly.</p>
-<h2 id="capabilities">Capabilities<a class="headerlink" href="#capabilities" title="Permanent link">&para;</a></h2>
+  <h1>Snyk Code SAST Tool and CI Integration</h1>
+
+<p>At M&amp;S Fortify On Demand(FOD) is being used for Static Application Security Testing (SAST). </p>
+<p>Fortify On Demand Analyzes the Source code for Application security vulnerabilities.
+Static Application Security Testing (SAST) can be integrated to CI/CD to trigger scan when a build process is initiated</p>
+<h3 id="integration-steps">Integration steps:<a class="headerlink" href="#integration-steps" title="Permanent link">&para;</a></h3>
+<h4 id="azure-devops">Azure Devops:<a class="headerlink" href="#azure-devops" title="Permanent link">&para;</a></h4>
+<p>Step 1: Store GitHub Username, Personal Access Token  and API_KEY and API_SECRET in Azure Keyvault.</p>
+<p>Step 2: Create a Pipeline.yml with following code</p>
+<div class="language-text highlight"><pre><span></span><code># Starter pipeline
+​
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+​
+trigger: none
+​
+jobs:
+- job: FOD_Scanning
+  pool:
+    name: poc-2-test
+  steps:
+​
+​
+  - task: Bash@3
+    inputs:
+      targetType: &#39;inline&#39;
+      script: |
+        wget -c https://github.com/fod-dev/fod-uploader-java/releases/download/v5.4.0/FodUpload.jar
+        pwd
+        ls -lrt
+
+  - task: Bash@3
+    inputs:
+      targetType: &#39;inline&#39;
+      script: |
+        apt install zip
+        zip -r &#39;WebGoat-develop.zip&#39; .
+
+  - task: AzureKeyVault@1
+    inputs:
+      azureSubscription: &#39;AzureResourceManager&#39;
+      KeyVaultName: &#39;cicd-v2-shared-kv&#39;
+      SecretsFilter: &#39;*&#39;
+      RunAsPreJob: false
+  - task: Bash@3
+    inputs:
+      targetType: &#39;inline&#39;
+      script: |
+        java -jar FodUpload.jar -ac $(FOD-API-KEY) $(FOD-API-SECRET) -rid $(RELEASE-ID) -purl $(FOD-PORTAL-URL) -apiurl $(FOD-API-URL) -z WebGoat-develop.zip -ep 2 -rp 0 -pp 1 -apf -I 1
+    displayName: &#39;FOD SAST Scan&#39;
+
+  - task: Bash@3
+    inputs:
+      targetType: &#39;inline&#39;
+      script: |
+             auth=$(curl -X POST --header &#39;Content-Type: application/x-www-form-urlencoded&#39; --header &#39;Connection: close&#39; -d &#39;grant_type=client_credentials&amp;scope=api-tenant&amp;client_id=$(FOD-API-KEY)&amp;client_secret=$(FOD-API-SECRET)&#39; &#39;https://api.emea.fortify.com/oauth/token&#39;)
+             tok3n=$( echo &quot;$auth&quot; | jq &#39;.[&quot;access_token&quot;]&#39; )
+             tok3n=&quot;${tok3n:1:-1}&quot;
+             releasedetails=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/releases/&#39;$(RELEASE-ID))
+             scanid=$( echo &quot;$releasedetails&quot; | jq .currentStaticScanId )
+             applicationname=$( echo &quot;$releasedetails&quot; | jq .applicationName | sed &#39;s/[&quot;]//g&#39;)
+             scanSummary=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/scans/&#39;${scanid}&#39;/summary&#39;)
+             CRITICAL=$( echo &quot;$releasedetails&quot; | jq .staticCritical )
+             HIGH=$( echo &quot;$releasedetails&quot; | jq .staticHigh )
+             if [ $CRITICAL -gt 0 ]
+             then
+               echo &quot;##[error]Application has critical Issues&quot;
+               curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Pipeline had warnings because critical issues in FoD SAST are present for &#39;$applicationname&#39;&quot;}&#39; $(teams_webhook)
+               #exit 1
+             elif [ $HIGH -gt 0 ]
+             then
+               echo &quot;##[error]Application has High Issues&quot;
+               curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Pipeline had warnings because high issues in FoD SAST are present for &#39;$applicationname&#39;&quot;}&#39; $(teams_webhook)
+               #exit 1
+             else
+               echo &quot;PASSED&quot;
+             fi
+    continueOnError: true           
+    displayName: &#39;FOD Security Gating&#39;
+</code></pre></div>
+<p>FOD-PORTAL-URL - https://emea.fortify.com/</p>
+<p>FOD-API-URL   -   https://api.emea.fortify.com/</p>
+<div class="language-text highlight"><pre><span></span><code>Note: To enforce security gating in block mode please uncomment exit code 1.
+</code></pre></div>
+<p>Sample Output:-</p>
+<p>1) After the scanning is completed, if the code has Critical or High security vulnerabilities, the job status will give an alert because of Security Gating Implementation. Please refer the below screenshot</p>
+<p>IMAGE</p>
+<p>To Resolve or Validate security vulnerabilities:-</p>
+<p>To validate or Resolve any security vulnerabilities after scanning the code in any CI/CD pipeline. Open that Application in Fortify on demand portal and check the last build run details. It will explain about each vulnerabilities clearly.</p>
+<h4 id="github-actions">Github Actions<a class="headerlink" href="#github-actions" title="Permanent link">&para;</a></h4>
+<div class="language-text highlight"><pre><span></span><code>Fortify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: DigitalInnovation/cloud-devsecops-pipelineactions/workflows/appsec/fortify@v1.1.1
+        with:
+          sast_release_id: ${{secrets.FOD_RELEASE_ID}}
+          sast_api_key: ${{ secrets.FOD_API_KEY}}
+          sast_api_secret: ${{ secrets.FOD_API_SECRET}}
+
+      - name: FOD Security Gating
+        run: |
+          auth=$(curl -X POST --header &#39;Content-Type: application/x-www-form-urlencoded&#39; --header &#39;Connection: close&#39; -d &#39;grant_type=client_credentials&amp;scope=api-tenant&amp;client_id=${{secrets.FOD_API_KEY}}&amp;client_secret=${{secrets.FOD_API_SECRET}}&#39; &#39;https://api.emea.fortify.com/oauth/token&#39;)
+          tok3n=$( echo &quot;$auth&quot; | jq &#39;.[&quot;access_token&quot;]&#39; )
+          tok3n=&quot;${tok3n:1:-1}&quot;
+          releasedetails=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/releases/&#39;${{secrets.FOD_RELEASE_ID}})
+          scanid=$( echo &quot;$releasedetails&quot; | jq .currentStaticScanId )
+          applicationname=$( echo &quot;$releasedetails&quot; | jq .applicationName | sed &#39;s/[&quot;]//g&#39;)
+          scanSummary=$(curl -X GET --header &#39;Accept: application/json&#39; --header &#39;Authorization: Bearer &#39;${tok3n} &#39;https://api.emea.fortify.com/api/v3/scans/&#39;${scanid}&#39;/summary&#39;)
+          CRITICAL=$( echo &quot;$releasedetails&quot; | jq .staticCritical )
+          HIGH=$( echo &quot;$releasedetails&quot; | jq .staticHigh )
+          if [ $CRITICAL -gt 0 ]
+          then
+            echo &quot;##[error]Application has critical Issues&quot;          
+            curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Application has critical Issues in FOD&quot;}&#39; ${{secrets.TEAMS_WEBHOOK}}          
+            #exit 1
+          elif [ $HIGH -gt 0 ]
+          then
+            echo &quot;##[error]Application has High Issues&quot;
+            curl -H &#39;Content-Type: application/json&#39; -d &#39;{&quot;text&quot;: &quot;Application has high Issues in FOD&quot;}&#39; ${{secrets.TEAMS_WEBHOOK}}
+            #exit 1
+          else
+            echo &quot;PASSED&quot;
+          fi
+        continue-on-error: true
+</code></pre></div>
+<p>Note: To enforce security gating in block mode please uncomment exit code 1.</p>
+<h4 id="jenkins">Jenkins<a class="headerlink" href="#jenkins" title="Permanent link">&para;</a></h4>
+<p>Step 1:  Store GitHub username and personal access token in Jenkins credentials.​​​​​​​</p>
+<p>Step 2:  Store API key, API secret in key vault credentials.</p>
+<p>Step 3: create a Jenkins pipeline and use the following code.</p>
+<div class="language-text highlight"><pre><span></span><code>pipeline {
+    agent any
+
+    stages {
+
+        stage(&#39;Git Checkout&#39;){
+            steps {
+                checkout([$class: &#39;GitSCM&#39;, branches: [[name: &#39;&lt;Github_branchname&gt;&#39;]], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: &#39;&lt;Github_credentials&gt;&#39;, url: &#39;&lt;Github_URL&gt;&#39;]]])
+                }
+            }
+
+        stage(&#39;ZIP directory to be uploaded or unzip something&#39;) {
+            agent {
+                docker {
+                    image &#39;javieraviles/zip&#39;
+                    reuseNode true
+                }
+            }
+            steps {
+                echo &quot;Creating zip file...&quot;
+
+                sh &quot;zip -r &#39;WebGoat-develop.zip&#39; &#39;&lt;Jenkins path where all the github files were downloaded&gt;&#39;&quot;
+            }
+            }
+        stage(&#39;Downloading the FOD jar file from Github&#39;){
+            steps{
+                sh &#39;wget -c https://github.com/fod-dev/fod-uploader-java/releases/download/v5.4.0/FodUpload.jar&#39;
+                }
+                }
+        stage(&#39;Retrieve keyvault credentials and Upload the ZIP file to FOD using jar&#39;){
+
+            options{
+
+                azureKeyVault(
+
+                    credentialID: &#39;&lt;Servicepriciple_credentials&gt;&#39;,
+​
+                    keyVaultURL: &#39;&lt;Keyvault_url&gt;&#39;,
+
+                    secrets: [
+
+                        [envVariable: &#39;API_KEY_FOD&#39;, name: &#39;FOD-API-KEY-Test&#39;, secretType: &#39;Secret&#39;],
+                        [envVariable: &#39;API_SECRET_FOD&#39;, name: &#39;FOD-API-SECRET-Test&#39;, secretType: &#39;Secret&#39;]
+
+                        ]
+                        )
+                        }
+                            steps{
+                                sh &#39;java -version&#39;
+
+                                sh &#39;java -jar FodUpload.jar -ac $API_KEY_FOD $API_SECRET_FOD -rid 6560 -purl https://emea.fortify.com/ -apiurl                                       https://api.emea.fortify.com/ -z WebGoat-develop.zip -ep 2 -rp 0 -pp 1 -apf -I 1&#39;
+
+                                }
+                                }
+
+
+
+
+                }
+            }
+</code></pre></div>
+<p>To understand what parameters, we need to use to run API from CI/CD tools. Please refer this link</p>
+<p>Note:</p>
+<p>1) If we are Scanning any code with "FOD Plugin", once the scan found any security vulnerabilities in code then it will automatically fail the CI/CD pipeline.</p>
+<p>2) As we are using FodUpload jar file to Scan the code instead of FOD plugin. There is no such process to fail the pipeline automatically once the scan found any security vulnerabilities in code.</p>
+<p>3) we need to use the custom code to fail the pipelines while using FodUpload jar to scan the code. Include lines from "55 to 63" to fail the CI/CD pipeline.</p>
+<p>4) $? is a special variable in shell that reads the exit status of the last command executed.</p>
+<p>Sample output:</p>
+<p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities Please refer the below screenshot</p>
+<p>IMAGE</p>
+<h4 id="concourse-ci">Concourse CI:<a class="headerlink" href="#concourse-ci" title="Permanent link">&para;</a></h4>
+<p>Step 1: Store GitHub Username, Personal Access Token  and API_KEY and API_SECRET in Hashicorp Vault.</p>
+<p>Step 2: Create a Pipeline.yml with following code</p>
+<div class="language-text highlight"><pre><span></span><code>resources:
+  - name: source-code
+    type: git
+    source:
+      uri: &lt;Github_Url&gt;
+      branch: &lt;branch_name&gt;
+      username: ((Github.username))
+      password: ((Github.personal_access_token))
+
+jobs:
+  - name: source-code
+    public: false
+    plan:
+      - get: source-code
+        trigger: true
+      - task: test-using-FOD-SAST
+        config:
+          platform: linux
+          image_resource:
+            type: registry-image
+            source: { repository: ubuntu, tag: &quot;latest&quot; }
+          params:
+            FOD_API_KEY: ((API_CRED.FOD_API_KEY))
+            FOD_API_SECRET: ((API_CRED.FOD_API_SECRET))
+          inputs:
+            - name: source-code
+          run:
+            path: /bin/sh
+            args:
+              - -c
+              - |
+                apt-get update
+                echo &quot;--------install java------&quot;               
+                apt-get update &amp;&amp; DEBIAN_FRONTEND=&quot;noninteractive&quot; TZ=&quot;Asia/india&quot; apt-get install -y tzdata
+                apt-get -y install openjdk-11-jre               
+                echo &quot;-------install zip----&quot;
+                apt-get -y install zip
+                echo &quot;-----install wget------&quot;
+                apt-get -y install wget
+                echo &quot;java --version&quot;
+                cd source-code
+                zip -r uploadsourc.zip . -i /*.*
+                wget -c https://github.com/fod-dev/fod-uploader-java/releases/download/v5.4.0/FodUpload.jar
+                java -jar FodUpload.jar -ac ((API_CRED.FOD_API_KEY)) ((API_CRED.FOD_API_SECRET)) -rid 6560 -purl https://emea.fortify.com/ -                      apiurl https://api.emea.fortify.com/ -z uploadsourc.zip -ep 2 -rp 0 -pp 1 -apf -I 1
+</code></pre></div>
+<p>Note:</p>
+<p>Use the variable name 'API_CRED.FOD_API_KEY' to pass fortify on demand  API token in the pipeline.
+All the variable fields are configured in Hashicorp vault for reusability and manage the secrets ((Hashicorp vault variable)).
+GitHub and Fortify on demand details to be updated in the Hashicorp Vault. (Don't hard code username and password values in the pipeline)
+For steps to create a secret keys in HC Vault, refer here.</p>
+<p>Sample Output:-</p>
+<p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities Please refer the below screenshot</p>
+<p>IMAGE</p>
+<h3 id="product-features">Product Features<a class="headerlink" href="#product-features" title="Permanent link">&para;</a></h3>
 <ul>
-<li>Threat Modeling</li>
-<li>Security testing </li>
-<li>CI/CD security and tooling<ul>
-<li>SAST</li>
-<li>DAST</li>
-<li>SCA</li>
-<li>Secret Scanning</li>
-<li>IAC</li>
-<li>Registry Scanning</li>
-<li>Container securityand</li>
+<li>Fortify on Demand gives you the tools to create, supplement, and expand a Software Security Assurance program with no infrastructure investments or security staff required.</li>
+<li>Fortify on Demand is the only application security provider to offer static application security testing (SAST), dynamic application security testing (DAST), and mobile application testing (MAST) on demand so you can choose the solution that’s right for your business.</li>
+<li>Fortify on Demand assessments include a review by  security experts. In combination with innovative Fortify Scan Analytics machine learning platform, it removes false positives and ensures overall quality so your development teams can maximize their remediation efforts early in the software lifecycle.</li>
+<li>Fortify on Demand gives developers the tools to write secure code and optimize application security at every step of the software development cycle.</li>
+<li>Fortify on Demand is a comprehensive platform designed with helpdesk ticketing available 24x7 through a dedicated support team.x-www-</li>
 </ul>
-</li>
-<li>Vulnerability Remediation Support</li>
-</ul>
+<h4 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h4>
+<p>IMAGE</p>
 
 
 
@@ -1342,7 +1735,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../Security%20Design/Security%20Checklist/Web%20Service/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Web Service" rel="prev">
+          <a href="../Snyk%20Code%20SAST%20-%20IDE%20Plugin/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Snyk Code SAST   IDE Plugin" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>
@@ -1351,20 +1744,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Web Service
+                Snyk Code SAST   IDE Plugin
               </div>
             </div>
           </a>
         
         
           
-          <a href="ToolsAndServices/" class="md-footer__link md-footer__link--next" aria-label="Next: AppSec Tools and Services" rel="next">
+          <a href="../../Secret%20Scanning/" class="md-footer__link md-footer__link--next" aria-label="Next: Secret scanning" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                AppSec Tools and Services
+                Secret scanning
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1401,10 +1794,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy"], "search": "../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.a51614de.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a51614de.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
