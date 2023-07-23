@@ -1238,6 +1238,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-in-security-open-source" class="md-nav__link">
+    Challenges in Security Open source
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-sca-tools-can-help" class="md-nav__link">
+    How SCA Tools can help?
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1253,6 +1275,18 @@
 
 <h1 id="software-composition-analysis">Software Composition Analysis<a class="headerlink" href="#software-composition-analysis" title="Permanent link">&para;</a></h1>
 <p>Developers are adopting more and more open-source code, third-party code and libraries to achieve various tasks in application development process. This may introduce application security vulnerabilities if the latest and non vulnerable versions of the packages are not used. But determining whether the open-source code is vulnerable or not is a cumbersome job. Hence there is a need of Software Composition Analysis (SCA) tool like Snyk to uncover hidden vulnerabilities in the libraries used and their vulnerable direct / transitive dependencies.</p>
+<h2 id="challenges-in-security-open-source">Challenges in Security Open source<a class="headerlink" href="#challenges-in-security-open-source" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Which libraries are we using, and do they contain any vulnerabilities?</li>
+<li>Does the vulnerable library do anything bad?</li>
+<li>Can I react fast enough to new vulnerabilities?</li>
+<li>What type of licenses are used, and can we use them?</li>
+</ul>
+<p>Simply using open-source libraries is not a security threat to the business. The real problem is not knowing that what you are using contains vulnerabilities, and that they are exploitable in your application.</p>
+<h2 id="how-sca-tools-can-help">How SCA Tools can help?<a class="headerlink" href="#how-sca-tools-can-help" title="Permanent link">&para;</a></h2>
+<p><em>Inventory - SCA tool creates inventory of all open-source components used
+ </em>Security Vulnerabilities - SCA tools identifies the known vulnerabilities in the open-source components used
+ *License Compliance - SCA tools helps in identifying the open-source license violations as per organizations policy</p>
 
 
 
