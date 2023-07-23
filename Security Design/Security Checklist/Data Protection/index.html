@@ -1266,53 +1266,88 @@
 <tbody>
 <tr>
 <td align="right">1</td>
-<td align="left">HTTPS should be used for your entire application. If you have to limit where it's used, then HTTPS must be applied to any authentication pages as well as to all pages after the user is authenticated. If sensitive information (e.g. personal information) can be submitted before authentication, those features must also be sent over.</td>
-<td align="left">CWE-311,CWE-319,CWE-523</td>
+<td align="left">Verify the application protects sensitive data from being cached in server components such as load balancers and application caches.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/524.html">CWE-524</a></td>
 </tr>
 <tr>
 <td align="right">2</td>
-<td align="left">For all pages requiring protection by HTTPS, the same URL should not be accessible via the insecure HTTP channel.</td>
-<td align="left">CWE-319</td>
+<td align="left">Verify that all cached or temporary copies of sensitive data stored on the server are protected from unauthorized access or purged/invalidated after the authorized user accesses the sensitive data.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/524.html">CWE-524</a></td>
 </tr>
 <tr>
 <td align="right">3</td>
-<td align="left">The Strict-Transport-Security header ensures that the browser does not talk to the server over HTTP. This helps reduce the risk of HTTP downgrade attacks as implemented by the sslsniff tool.</td>
-<td align="left">.</td>
+<td align="left">Verify the application minimizes the number of parameters in a request, such as hidden fields, Ajax variables, cookies and header values.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/233.html">CWE-233</a></td>
 </tr>
 <tr>
 <td align="right">4</td>
-<td align="left">User passwords must be stored using secure hashing techniques with strong algorithms like PBKDF2, bcrypt, or SHA-512. Simply hashing the password a single time does not sufficiently protect the password. Use adaptive hashing (a work factor), combined with a randomly generated salt for each user to make the hash strong.</td>
-<td align="left">CWE-257</td>
+<td align="left">Verify the application can detect and alert on abnormal numbers of requests, such as by IP, user, total per hour or day, or whatever makes sense for the application.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/770.html">CWE-770</a></td>
 </tr>
 <tr>
 <td align="right">5</td>
-<td align="left">If encryption keys are exchanged or pre-set in your application then any key establishment or exchange must be performed over a secure channel</td>
-<td align="left">.</td>
+<td align="left">Verify that regular backups of important data are performed and that test restoration of data is performed.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/19.html">CWE-19</a></td>
 </tr>
 <tr>
 <td align="right">6</td>
-<td align="left">When keys are stored in your system they must be properly secured and only accessible to the appropriate staff on a need to know basis. Example: AWS Key Management Service (KMS), Azure Key Vault, AWS CloudHSM</td>
-<td align="left">CWE-320</td>
+<td align="left">Verify that backups are stored securely to prevent data from being stolen or corrupted.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/19.html">CWE-19</a></td>
 </tr>
 <tr>
 <td align="right">7</td>
-<td align="left">Weak ciphers must be disabled on all servers. For example, SSL v2, SSL v3, and TLS protocols prior to 1.2 have known weaknesses and are not considered secure. Additionally, disable the NULL, RC4, DES, and MD5 cipher suites. Ensure all key lengths are greater than 128 bits, use secure renegotiation, and disable compression.</td>
-<td align="left">.</td>
+<td align="left">Verify the application sets sufficient anti-caching headers so that sensitive data is not cached in modern browsers.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/525.html">CWE-525</a></td>
 </tr>
 <tr>
 <td align="right">8</td>
-<td align="left">HTTPS certificates should be signed by a reputable certificate authority. The name on the certificate should match the FQDN of the website. The certificate itself should be valid and not expired.</td>
-<td align="left">.</td>
+<td align="left"></td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/922.html">CWE-922</a></td>
 </tr>
 <tr>
 <td align="right">9</td>
-<td align="left">Browser data caching should be disabled using the cache control HTTP headers or meta tags within the HTML page. Additionally, sensitive input fields, such as the login form, should have the autocomplete=off setting in the HTML form to instruct the browser not to cache the credentials.</td>
-<td align="left">CWE-524</td>
+<td align="left">Verify that authenticated data is cleared from client storage, such as the browser DOM, after the client or session is terminated.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/922.html">CWE-922</a></td>
 </tr>
 <tr>
 <td align="right">10</td>
-<td align="left">Conduct an evaluation to ensure that sensitive data is not being unnecessarily transported or stored. Where possible, use tokenization to reduce data exposure risks.</td>
-<td align="left">.</td>
+<td align="left">Verify that sensitive data is sent to the server in the HTTP message body or headers, and that query string parameters from any HTTP verb do not contain sensitive data.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/319.html">CWE-319</a></td>
+</tr>
+<tr>
+<td align="right">11</td>
+<td align="left">Verify that users have a method to remove or export their data on demand.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/212.html">CWE-212</a></td>
+</tr>
+<tr>
+<td align="right">12</td>
+<td align="left">Verify that users are provided clear language regarding collection and use of supplied personal information and that users have provided opt-in consent for the use of that data before it is used in any way.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/285.html">CWE-285</a></td>
+</tr>
+<tr>
+<td align="right">13</td>
+<td align="left">Verify that all sensitive data created and processed by the application has been identified, and ensure that a policy is in place on how to deal with sensitive data.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/200.html">CWE-200</a></td>
+</tr>
+<tr>
+<td align="right">14</td>
+<td align="left">Verify accessing sensitive data is audited (without logging the sensitive data itself), if the data is collected under relevant data protection directives or where logging of access is required.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/532.html">CWE-532</a></td>
+</tr>
+<tr>
+<td align="right">15</td>
+<td align="left">Verify that sensitive information contained in memory is overwritten as soon as it is no longer required to mitigate memory dumping attacks, using zeroes or random data.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/226.html">CWE-226</a></td>
+</tr>
+<tr>
+<td align="right">16</td>
+<td align="left">Verify that sensitive or private information that is required to be encrypted, is encrypted using approved algorithms that provide both confidentiality and integrity.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/327.html">CWE-327</a></td>
+</tr>
+<tr>
+<td align="right">17</td>
+<td align="left">Verify that sensitive personal information is subject to data retention classification, such that old or out of date data is deleted automatically, on a schedule, or as the situation requires.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/285.html">CWE-285</a></td>
 </tr>
 </tbody>
 </table>

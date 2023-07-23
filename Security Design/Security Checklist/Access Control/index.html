@@ -1266,23 +1266,53 @@
 <tbody>
 <tr>
 <td align="right">1</td>
-<td align="left">Always apply the principle of complete mediation, forcing all requests through a common security "gate keeper." This ensures that access control checks are triggered whether or not the user is authenticated.</td>
-<td align="left">CWE-284</td>
+<td align="left">Verify that the application enforces access control rules on a trusted service layer, especially if client-side access control is present and could be bypassed.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/602.html">CWE-602</a></td>
 </tr>
 <tr>
 <td align="right">2</td>
-<td align="left">Make use of a Mandatory Access Control system. All access decisions will be based on the principle of least privilege. If not explicitly allowed then access should be denied. Additionally, after an account is created, rights must be specifically added to that account to grant access to resources.</td>
-<td align="left">CWE-272,CWE-250</td>
+<td align="left">Verify that all user and data attributes and policy information used by access controls cannot be manipulated by end users unless specifically authorized.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/639.html">CWE-639</a></td>
 </tr>
 <tr>
 <td align="right">3</td>
-<td align="left">Do not allow direct references to files or parameters that can be manipulated to grant excessive access. Access control decisions must be based on the authenticated user identity and trusted server side information.</td>
-<td align="left">CWE-284</td>
+<td align="left">Verify that the principle of least privilege exists - users should only be able to access functions, data files, URLs, controllers, services, and other resources, for which they possess specific authorization. This implies protection against spoofing and elevation of privilege.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/285.html">CWE-285</a></td>
 </tr>
 <tr>
 <td align="right">4</td>
-<td align="left">An unvalidated forward can allow an attacker to access private content without authentication. Unvalidated redirects allow an attacker to lure victims into visiting malicious sites. Prevent these from occurring by conducting the appropriate access controls checks before sending the user to the given location.</td>
-<td align="left">CWE-601</td>
+<td align="left">Verify that the principle of deny by default exists whereby new users/roles start with minimal or no permissions and users/roles do not receive access to new features until access is explicitly assigned.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/276.html">CWE-276</a></td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="left">Verify that access controls fail securely including when an exception occurs.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/285.html">CWE-285</a></td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="left">Verify that sensitive data and APIs are protected against Insecure Direct Object Reference (IDOR) attacks targeting creation, reading, updating and deletion of records, such as creating or updating someone else's record, viewing everyone's records, or deleting all records.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/639.html">CWE-639</a></td>
+</tr>
+<tr>
+<td align="right">7</td>
+<td align="left">Verify that the application or framework enforces a strong anti-CSRF mechanism to protect authenticated functionality, and effective anti-automation or anti-CSRF protects unauthenticated functionality.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/352.html">CWE-352</a></td>
+</tr>
+<tr>
+<td align="right">8</td>
+<td align="left">Verify administrative interfaces use appropriate multi-factor authentication to prevent unauthorized use.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/419.html">CWE-419</a></td>
+</tr>
+<tr>
+<td align="right">9</td>
+<td align="left">Verify that directory browsing is disabled unless deliberately desired. Additionally, applications should not allow discovery or disclosure of file or directory metadata, such as Thumbs.db, .DS_Store, .git or .svn folders.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/548.html">CWE-548</a></td>
+</tr>
+<tr>
+<td align="right">10</td>
+<td align="left">Verify the application has additional authorization (such as step up or adaptive authentication) for lower value systems, and / or segregation of duties for high value applications to enforce anti-fraud controls as per the risk of application and past fraud.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/732.html">CWE-732</a></td>
 </tr>
 </tbody>
 </table>

@@ -1258,51 +1258,296 @@
 <table>
 <thead>
 <tr>
-<th align="left">Authentication</th>
-<th align="left">.</th>
-<th align="left">..1</th>
+<th align="right">#</th>
+<th align="left">Security Requirement</th>
+<th align="left">CWE</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">#</td>
-<td align="left">Security Requirement</td>
-<td align="left">CWE</td>
+<td align="right">1</td>
+<td align="left">Verify that user set passwords are at least 12 characters in length (after multiple spaces are combined).</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
 </tr>
 <tr>
-<td align="left">1</td>
-<td align="left">Never allow credentials to be stored directly within the application code. While it can be convenient to test application code with hardcoded credentials during development this significantly increases risk and should be avoided.</td>
-<td align="left">CWE-798</td>
+<td align="right">2</td>
+<td align="left">Verify that passwords 64 characters or longer are permitted but may be no longer than 128 characters.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
 </tr>
 <tr>
-<td align="left">2</td>
-<td align="left">Password reset systems are often the weakest link in an application. These systems are often based on the user answering personal questions to establish their identity and in turn reset the password. The system needs to be based on questions that are both hard to guess and brute force. Additionally, any password reset option must not reveal whether or not an account is valid, preventing username harvesting.</td>
-<td align="left">CWE-640</td>
+<td align="right">3</td>
+<td align="left">Verify that password truncation is not performed. However, consecutive multiple spaces may be replaced by a single space.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
 </tr>
 <tr>
-<td align="left">3</td>
-<td align="left">For password based authentication, password policy should be created and implemented so that passwords meet specific strength criteria. If the user base and application can support it, leverage the various forms of passwordless authentication such as FIDO2 based authentication or mobile application push based authenticators.</td>
-<td align="left">CWE-521</td>
+<td align="right">4</td>
+<td align="left">Verify that any printable Unicode character, including language neutral characters such as spaces and Emojis are permitted in passwords.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
 </tr>
 <tr>
-<td align="left">4</td>
-<td align="left">Account lockout needs to be implemented to guard against brute forcing attacks against both the authentication and password reset functionality. After several tries on a specific user account, the account should be locked for a period of time or until manually unlocked. Additionally, it is best to continue the same failure message indicating that the credentials are incorrect or the account is locked to prevent an attacker from harvesting usernames.</td>
-<td align="left">CWE-307</td>
+<td align="right">5</td>
+<td align="left">Verify users can change their password.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/620.html">CWE-620</a></td>
 </tr>
 <tr>
-<td align="left">5</td>
-<td align="left">Messages for authentication errors must be clear and, at the same time, be written so that sensitive information about the system is not disclosed. For example, error messages which reveal that the userid is valid but that the corresponding password is incorrect confirms to an attacker that the account does exist on the system.</td>
-<td align="left">.</td>
+<td align="right">6</td>
+<td align="left">Verify that password change functionality requires the user's current and new password.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/620.html">CWE-620</a></td>
 </tr>
 <tr>
-<td align="left">6</td>
-<td align="left">Modern web applications usually consist of multiple layers. The business logic tier (processing of information) often connects to the data tier (database). Connecting to the database, of course, requires authentication. The authentication credentials in the business logic tier must be stored in a centralized location that is locked down. The same applies to accessing APIs providing services to support your application. Scattering credentials throughout the source code is not acceptable. Some development frameworks provide a centralized secure location for storing credentials to the backend database. Secret management solutions that are cloud based or on-premise can be used to allow the application to acquire the credential at application launch or when needed, therefore securing the credentials and avoid storing them statically on disk within a server or a container image.</td>
-<td align="left">CWE-257</td>
+<td align="right">7</td>
+<td align="left">Verify that passwords submitted during account registration, login, and password change are checked against a set of breached passwords either locally (such as the top 1,000 or 10,000 most common passwords which match the system's password policy) or using an external API. If using an API a zero knowledge proof or other mechanism should be used to ensure that the plain text password is not sent or used in verifying the breach status of the password. If the password is breached, the application must require the user to set a new non-breached password.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
 </tr>
 <tr>
-<td align="left">7</td>
-<td align="left">If an application becomes compromised it is important that the application itself and any middleware services be configured to run with minimal privileges. For instance, while the application layer or business layer needs the ability to read and write data to the underlying database, administrative credentials that grant access to other databases or tables should not be provided.</td>
-<td align="left">CWE-250</td>
+<td align="right">8</td>
+<td align="left">Verify that a password strength meter is provided to help users set a stronger password.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">9</td>
+<td align="left">Verify that there are no password composition rules limiting the type of characters permitted. There should be no requirement for upper or lower case or numbers or special characters.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">10</td>
+<td align="left">Verify that there are no periodic credential rotation or password history requirements.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/263.html">CWE-263</a></td>
+</tr>
+<tr>
+<td align="right">11</td>
+<td align="left">Verify that "paste" functionality, browser password helpers, and external password managers are permitted.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">12</td>
+<td align="left">Verify that the user can choose to either temporarily view the entire masked password, or temporarily view the last typed character of the password on platforms that do not have this as built-in functionality.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">13</td>
+<td align="left">Verify that anti-automation controls are effective at mitigating breached credential testing, brute force, and account lockout attacks. Such controls include blocking the most common breached passwords, soft lockouts, rate limiting, CAPTCHA, ever increasing delays between attempts, IP address restrictions, or risk-based restrictions such as location, first login on a device, recent attempts to unlock the account, or similar. Verify that no more than 100 failed attempts per hour is possible on a single account.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/307.html">CWE-307</a></td>
+</tr>
+<tr>
+<td align="right">14</td>
+<td align="left">Verify that the use of weak authenticators (such as SMS and email) is limited to secondary verification and transaction approval and not as a replacement for more secure authentication methods. Verify that stronger methods are offered before weak methods, users are aware of the risks, or that proper measures are in place to limit the risks of account compromise.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/304.html">CWE-304</a></td>
+</tr>
+<tr>
+<td align="right">15</td>
+<td align="left">Verify that secure notifications are sent to users after updates to authentication details, such as credential resets, email or address changes, logging in from unknown or risky locations. The use of push notifications - rather than SMS or email - is preferred, but in the absence of push notifications, SMS or email is acceptable as long as no sensitive information is disclosed in the notification.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/620.html">CWE-620</a></td>
+</tr>
+<tr>
+<td align="right">16</td>
+<td align="left">Verify impersonation resistance against phishing, such as the use of multi-factor authentication, cryptographic devices with intent (such as connected keys with a push to authenticate), or at higher AAL levels, client-side certificates.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">17</td>
+<td align="left">Verify that where a Credential Service Provider (CSP) and the application verifying authentication are separated, mutually authenticated TLS is in place between the two endpoints.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/319.html">CWE-319</a></td>
+</tr>
+<tr>
+<td align="right">18</td>
+<td align="left">Verify replay resistance through the mandated use of One-time Passwords (OTP) devices, cryptographic authenticators, or lookup codes.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">19</td>
+<td align="left">Verify intent to authenticate by requiring the entry of an OTP token or user-initiated action such as a button press on a FIDO hardware key.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td align="left">Verify system generated initial passwords or activation codes SHOULD be securely randomly generated, SHOULD be at least 6 characters long, and MAY contain letters and numbers, and expire after a short period of time. These initial secrets must not be permitted to become the long term password.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/330.html">CWE-330</a></td>
+</tr>
+<tr>
+<td align="right">21</td>
+<td align="left">Verify that enrollment and use of subscriber-provided authentication devices are supported, such as a U2F or FIDO tokens.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">22</td>
+<td align="left">Verify that renewal instructions are sent with sufficient time to renew time bound authenticators.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">23</td>
+<td align="left">Verify that passwords are stored in a form that is resistant to offline attacks. Passwords SHALL be salted and hashed using an approved one-way key derivation or password hashing function. Key derivation and password hashing functions take a password, a salt, and a cost factor as inputs when generating a password hash.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></td>
+</tr>
+<tr>
+<td align="right">24</td>
+<td align="left">Verify that the salt is at least 32 bits in length and be chosen arbitrarily to minimize salt value collisions among stored hashes. For each credential, a unique salt value and the resulting hash SHALL be stored.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></td>
+</tr>
+<tr>
+<td align="right">25</td>
+<td align="left">Verify that if PBKDF2 is used, the iteration count SHOULD be as large as verification server performance will allow, typically at least 100,000 iterations.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></td>
+</tr>
+<tr>
+<td align="right">26</td>
+<td align="left">Verify that if bcrypt is used, the work factor SHOULD be as large as verification server performance will allow, typically at least 13.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></td>
+</tr>
+<tr>
+<td align="right">27</td>
+<td align="left">Verify that an additional iteration of a key derivation function is performed, using a salt value that is secret and known only to the verifier. Generate the salt value using an approved random bit generator [SP 800-90Ar1] and provide at least the minimum security strength specified in the latest revision of SP 800-131A. The secret salt value SHALL be stored separately from the hashed passwords (e.g., in a specialized device like a hardware security module).</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></td>
+</tr>
+<tr>
+<td align="right">28</td>
+<td align="left">Verify that a system generated initial activation or recovery secret is not sent in clear text to the user.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/640.html">CWE-640</a></td>
+</tr>
+<tr>
+<td align="right">29</td>
+<td align="left">Verify password hints or knowledge-based authentication (so-called "secret questions") are not present.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/640.html">CWE-640</a></td>
+</tr>
+<tr>
+<td align="right">30</td>
+<td align="left">Verify password credential recovery does not reveal the current password in any way.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/640.html">CWE-640</a></td>
+</tr>
+<tr>
+<td align="right">31</td>
+<td align="left">Verify shared or default accounts are not present (e.g. "root", "admin", or "sa").</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></td>
+</tr>
+<tr>
+<td align="right">32</td>
+<td align="left">Verify that if an authentication factor is changed or replaced, that the user is notified of this event.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/304.html">CWE-304</a></td>
+</tr>
+<tr>
+<td align="right">33</td>
+<td align="left">Verify forgotten password, and other recovery paths use a secure recovery mechanism, such as time-based OTP (TOTP) or other soft token, mobile push, or another offline recovery mechanism.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/640.html">CWE-640</a></td>
+</tr>
+<tr>
+<td align="right">34</td>
+<td align="left">Verify that if OTP or multi-factor authentication factors are lost, that evidence of identity proofing is performed at the same level as during enrollment.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">35</td>
+<td align="left">Verify that lookup secrets can be used only once.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">36</td>
+<td align="left">Verify that lookup secrets have sufficient randomness (112 bits of entropy), or if less than 112 bits of entropy, salted with a unique and random 32-bit salt and hashed with an approved one-way hash.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/330.html">CWE-330</a></td>
+</tr>
+<tr>
+<td align="right">37</td>
+<td align="left">Verify that lookup secrets are resistant to offline attacks, such as predictable values.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/310.html">CWE-310</a></td>
+</tr>
+<tr>
+<td align="right">38</td>
+<td align="left">Verify that clear text out of band (NIST "restricted") authenticators, such as SMS or PSTN, are not offered by default, and stronger alternatives such as push notifications are offered first.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">39</td>
+<td align="left">Verify that the out of band verifier expires out of band authentication requests, codes, or tokens after 10 minutes.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td align="left">Verify that the out of band verifier authentication requests, codes, or tokens are only usable once, and only for the original authentication request.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">41</td>
+<td align="left">Verify that the out of band authenticator and verifier communicates over a secure independent channel.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/523.html">CWE-523</a></td>
+</tr>
+<tr>
+<td align="right">42</td>
+<td align="left">Verify that the out of band verifier retains only a hashed version of the authentication code.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/256.html">CWE-256</a></td>
+</tr>
+<tr>
+<td align="right">43</td>
+<td align="left">Verify that the initial authentication code is generated by a secure random number generator, containing at least 20 bits of entropy (typically a six digital random number is sufficient).</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/310.html">CWE-310</a></td>
+</tr>
+<tr>
+<td align="right">44</td>
+<td align="left">Verify that time-based OTPs have a defined lifetime before expiring.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/613.html">CWE-613</a></td>
+</tr>
+<tr>
+<td align="right">45</td>
+<td align="left">Verify that symmetric keys used to verify submitted OTPs are highly protected, such as by using a hardware security module or secure operating system based key storage.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/320.html">CWE-320</a></td>
+</tr>
+<tr>
+<td align="right">46</td>
+<td align="left">Verify that approved cryptographic algorithms are used in the generation, seeding, and verification of OTPs.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/326.html">CWE-326</a></td>
+</tr>
+<tr>
+<td align="right">47</td>
+<td align="left">Verify that time-based OTP can be used only once within the validity period.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">48</td>
+<td align="left">Verify that if a time-based multi-factor OTP token is re-used during the validity period, it is logged and rejected with secure notifications being sent to the holder of the device.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">49</td>
+<td align="left">Verify physical single-factor OTP generator can be revoked in case of theft or other loss. Ensure that revocation is immediately effective across logged in sessions, regardless of location.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/613.html">CWE-613</a></td>
+</tr>
+<tr>
+<td align="right">50</td>
+<td align="left">Verify that biometric authenticators are limited to use only as secondary factors in conjunction with either something you have and something you know.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">51</td>
+<td align="left">Verify that cryptographic keys used in verification are stored securely and protected against disclosure, such as using a Trusted Platform Module (TPM) or Hardware Security Module (HSM), or an OS service that can use this secure storage.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/320.html">CWE-320</a></td>
+</tr>
+<tr>
+<td align="right">52</td>
+<td align="left">Verify that the challenge nonce is at least 64 bits in length, and statistically unique or unique over the lifetime of the cryptographic device.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/330.html">CWE-330</a></td>
+</tr>
+<tr>
+<td align="right">53</td>
+<td align="left">Verify that approved cryptographic algorithms are used in the generation, seeding, and verification.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/327.html">CWE-327</a></td>
+</tr>
+<tr>
+<td align="right">54</td>
+<td align="left">Verify that intra-service secrets do not rely on unchanging credentials such as passwords, API keys or shared accounts with privileged access.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">55</td>
+<td align="left">Verify that if passwords are required for service authentication, the service account used is not a default credential. (e.g. root/root or admin/admin are default in some services during installation).</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/255.html">CWE-255</a></td>
+</tr>
+<tr>
+<td align="right">56</td>
+<td align="left">Verify that passwords are stored with sufficient protection to prevent offline recovery attacks, including local system access.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/522.html">CWE-522</a></td>
+</tr>
+<tr>
+<td align="right">57</td>
+<td align="left">Verify passwords, integrations with databases and third-party systems, seeds and internal secrets, and API keys are managed securely and not included in the source code or stored within source code repositories. Such storage SHOULD resist offline attacks. The use of a secure software key store (L1), hardware TPM, or an HSM (L3) is recommended for password storage.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/798.html">CWE-798</a></td>
 </tr>
 </tbody>
 </table>
