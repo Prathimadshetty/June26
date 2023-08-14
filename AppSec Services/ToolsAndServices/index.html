@@ -9,17 +9,17 @@
       
       
       
-        <link rel="prev" href="../SAST/Snyk%20Code%20SAST%20Tool%20and%20CI%20Integration/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="Secret%20Scanning%20Tool%20Integration/">
+        <link rel="next" href="../DAST/">
       
       <link rel="icon" href="../../Logo/M&S-Logo.svg">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
-        <title>Secret scanning - Application Security</title>
+        <title>AppSec Tools and Services - Application Security</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#secret-scanning" class="md-skip">
+        <a href="#appsec-tools-and-services" class="md-skip">
           Skip to content
         </a>
       
@@ -120,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Secret scanning
+              AppSec Tools and Services
             
           </span>
         </div>
@@ -253,7 +253,7 @@
   
     <li class="md-tabs__item">
       <a href="../" class="md-tabs__link md-tabs__link--active">
-        AppSec Testing
+        AppSec Services
       </a>
     </li>
   
@@ -771,7 +771,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../">AppSec Testing</a>
+          <a href="../">AppSec Services</a>
           
             <label for="__nav_4">
               <span class="md-nav__icon md-icon"></span>
@@ -782,7 +782,7 @@
       <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          AppSec Testing
+          AppSec Services
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -792,11 +792,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../ToolsAndServices/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         AppSec Tools and Services
       </a>
+      
     </li>
   
 
@@ -986,16 +996,16 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" checked>
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
       
       
         
@@ -1009,8 +1019,8 @@
       
         
         
-        <div class="md-nav__link md-nav__link--index md-nav__link--active">
-          <a href="./">Secret Scanning</a>
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../Secret%20Scanning/">Secret Scanning</a>
           
             <label for="__nav_4_5">
               <span class="md-nav__icon md-icon"></span>
@@ -1018,7 +1028,7 @@
           
         </div>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4_5">
           <span class="md-nav__icon md-icon"></span>
           Secret Scanning
@@ -1033,7 +1043,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Secret%20Scanning%20Tool%20Integration/" class="md-nav__link">
+      <a href="../Secret%20Scanning/Secret%20Scanning%20Tool%20Integration/" class="md-nav__link">
         Secret Scanning Tool and CI Integration
       </a>
     </li>
@@ -1283,10 +1293,65 @@
                   
 
 
-<div><h1 id="secret-scanning">Secret scanning<a class="headerlink" href="#secret-scanning" title="Permanent link">¶</a></h1>
-<p>Hardcoded secrets have always been a problem in organizations and are one of the first things we look for during a penetration test.</p>
-<p>When developers write secrets such as passwords and API keys directly into source code, these secrets can make their way to public repos or application packages, then into an attacker’s hands. Developers can sometimes make mistakes when handling sensitive data.</p>
-<p>A good strategy to minimize the risk of hardcoded secrets is to employ a scan that combines pattern searching with entropy analysis before code makes it to production and to store secrets in configuration files or secret management services instead.</p></div>
+<div><h1 id="appsec-tools-and-services">AppSec Tools and Services<a class="headerlink" href="#appsec-tools-and-services" title="Permanent link">¶</a></h1>
+<p>...</p>
+<table>
+<thead>
+<tr>
+<th align="left">Scan Type</th>
+<th align="left">Functionality</th>
+<th align="left">Toolset</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Static Application Security Testing (SAST):</td>
+<td align="left">Scan of application source code is conducted</td>
+<td align="left">FOD</td>
+</tr>
+<tr>
+<td align="left">Software Composition Analysis (SCA):</td>
+<td align="left">Scan of third party and open-source components is conducted (Dependency scan)</td>
+<td align="left">Snyk</td>
+</tr>
+<tr>
+<td align="left">Dynamic Application Security Testing (DAST):</td>
+<td align="left">Dynamic scan of web applications is conducted</td>
+<td align="left">FOD</td>
+</tr>
+<tr>
+<td align="left">Container and Image Scans</td>
+<td align="left">Container and Image scans are conducted and provides runtime protection.</td>
+<td align="left">Prisma Cloud</td>
+</tr>
+<tr>
+<td align="left">Secret Scan</td>
+<td align="left">Analyze &amp; find secrets such as private keys, passwords, certificates in the organization’s resource</td>
+<td align="left">TruffleHog</td>
+</tr>
+<tr>
+<td align="left">IAC Scanning</td>
+<td align="left">Infrastructure as a code files are scanned</td>
+<td align="left">Prisma Cloud</td>
+</tr>
+<tr>
+<td align="left">Defender for Cloud</td>
+<td align="left">Cloud Posture management and compliance through secure score scanning</td>
+<td align="left">Azure Defender for cloud</td>
+</tr>
+<tr>
+<td align="left">Azure PIM</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">Akamai WAF and DDOS - Volumetric</td>
+<td align="left">Edge protection for applications</td>
+<td align="left">Akamai</td>
+</tr>
+</tbody>
+</table>
+<p>...</p></div>
 
 
 
@@ -1313,7 +1378,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../SAST/Snyk%20Code%20SAST%20Tool%20and%20CI%20Integration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Snyk Code SAST Tool and CI Integration" rel="prev">
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Application Testing" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>
@@ -1322,20 +1387,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Snyk Code SAST Tool and CI Integration
+                Application Testing
               </div>
             </div>
           </a>
         
         
           
-          <a href="Secret%20Scanning%20Tool%20Integration/" class="md-footer__link md-footer__link--next" aria-label="Next: Secret Scanning Tool and CI Integration" rel="next">
+          <a href="../DAST/" class="md-footer__link md-footer__link--next" aria-label="Next: Index" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Secret Scanning Tool and CI Integration
+                Index
               </div>
             </div>
             <div class="md-footer__button md-icon">

@@ -9,24 +9,24 @@
       
       
       
-        <link rel="prev" href="../SAST%20Tool%20and%20CI%20Integration/">
+        <link rel="prev" href="../Secret%20Scanning/Secret%20Scanning%20Tool%20Integration/">
       
       
-        <link rel="next" href="../Snyk%20Code%20SAST%20Tool%20and%20CI%20Integration/">
+        <link rel="next" href="SCA%20Tool%20and%20CI%20Integration/">
       
-      <link rel="icon" href="../../../Logo/M&S-Logo.svg">
+      <link rel="icon" href="../../Logo/M&S-Logo.svg">
       <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
     
     
       
-        <title>Snyk Code SAST IDE Plugin - Application Security</title>
+        <title>Software Composition Analysis - Application Security</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.26e3688c.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ecc896b0.min.css">
       
       
 
@@ -42,14 +42,14 @@
       
     
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
     
     
     
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -60,7 +60,7 @@
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -81,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#software-composition-analysis" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -97,9 +102,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Application Security" class="md-header__button md-logo" aria-label="Application Security" data-md-component="logo">
+    <a href="../.." title="Application Security" class="md-header__button md-logo" aria-label="Application Security" data-md-component="logo">
       
-  <img src="../../../Logo/MS-Logo.png" alt="logo">
+  <img src="../../Logo/MS-Logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -115,7 +120,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Snyk Code SAST   IDE Plugin
+              Software Composition Analysis
             
           </span>
         </div>
@@ -198,7 +203,7 @@
 
 
   <li class="md-tabs__item">
-    <a href="../../.." class="md-tabs__link">
+    <a href="../.." class="md-tabs__link">
       Home
     </a>
   </li>
@@ -213,7 +218,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../SSDLC/" class="md-tabs__link">
+      <a href="../../SSDLC/" class="md-tabs__link">
         SSDLC
       </a>
     </li>
@@ -229,7 +234,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Security%20Design/" class="md-tabs__link">
+      <a href="../../Security%20Design/" class="md-tabs__link">
         Security Design
       </a>
     </li>
@@ -247,8 +252,8 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../" class="md-tabs__link md-tabs__link--active">
-        AppSec Testing
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        AppSec Services
       </a>
     </li>
   
@@ -263,7 +268,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Awareness/" class="md-tabs__link">
+      <a href="../../Awareness/" class="md-tabs__link">
         Awareness
       </a>
     </li>
@@ -279,7 +284,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../Contact/" class="md-tabs__link">
+      <a href="../../Contact/" class="md-tabs__link">
         Contact
       </a>
     </li>
@@ -313,9 +318,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Application Security" class="md-nav__button md-logo" aria-label="Application Security" data-md-component="logo">
+    <a href="../.." title="Application Security" class="md-nav__button md-logo" aria-label="Application Security" data-md-component="logo">
       
-  <img src="../../../Logo/MS-Logo.png" alt="logo">
+  <img src="../../Logo/MS-Logo.png" alt="logo">
 
     </a>
     Application Security
@@ -331,7 +336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -366,7 +371,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../SSDLC/">SSDLC</a>
+          <a href="../../SSDLC/">SSDLC</a>
           
         </div>
       
@@ -417,7 +422,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../Security%20Design/">Security Design</a>
+          <a href="../../Security%20Design/">Security Design</a>
           
             <label for="__nav_3">
               <span class="md-nav__icon md-icon"></span>
@@ -440,7 +445,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/TM/" class="md-nav__link">
+      <a href="../../Security%20Design/TM/" class="md-nav__link">
         TM
       </a>
     </li>
@@ -502,7 +507,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../Security%20Design/Security%20Checklist/">Security Checklist</a>
+          <a href="../../Security%20Design/Security%20Checklist/">Security Checklist</a>
           
             <label for="__nav_3_3">
               <span class="md-nav__icon md-icon"></span>
@@ -525,7 +530,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Access%20Control/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Access%20Control/" class="md-nav__link">
         Access Control
       </a>
     </li>
@@ -539,7 +544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Architecture/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Architecture/" class="md-nav__link">
         Architecture
       </a>
     </li>
@@ -553,7 +558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Authentication/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Authentication/" class="md-nav__link">
         Authentication
       </a>
     </li>
@@ -567,7 +572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Business%20Logic/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Business%20Logic/" class="md-nav__link">
         Business Logic
       </a>
     </li>
@@ -581,7 +586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Communication%20Security/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Communication%20Security/" class="md-nav__link">
         Communication Security
       </a>
     </li>
@@ -595,7 +600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Configuration%20and%20Operations/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Configuration%20and%20Operations/" class="md-nav__link">
         Configuration and Operations
       </a>
     </li>
@@ -609,7 +614,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Cryptography/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Cryptography/" class="md-nav__link">
         Cryptography
       </a>
     </li>
@@ -623,7 +628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Data%20Protection/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Data%20Protection/" class="md-nav__link">
         Data Protection
       </a>
     </li>
@@ -637,7 +642,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Error%20Handling%20and%20Logging/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Error%20Handling%20and%20Logging/" class="md-nav__link">
         Error Handling and Logging
       </a>
     </li>
@@ -651,7 +656,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Files%20and%20Resources/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Files%20and%20Resources/" class="md-nav__link">
         Files and Resources
       </a>
     </li>
@@ -665,7 +670,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Input%20and%20Output%20Validation/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Input%20and%20Output%20Validation/" class="md-nav__link">
         Input and Output Validation
       </a>
     </li>
@@ -679,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Malicious%20Code/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Malicious%20Code/" class="md-nav__link">
         Malicious Code
       </a>
     </li>
@@ -693,7 +698,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Session%20Management/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Session%20Management/" class="md-nav__link">
         Session Management
       </a>
     </li>
@@ -707,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Security%20Design/Security%20Checklist/Web%20Service/" class="md-nav__link">
+      <a href="../../Security%20Design/Security%20Checklist/Web%20Service/" class="md-nav__link">
         Web Service
       </a>
     </li>
@@ -766,7 +771,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../">AppSec Testing</a>
+          <a href="../">AppSec Services</a>
           
             <label for="__nav_4">
               <span class="md-nav__icon md-icon"></span>
@@ -777,7 +782,7 @@
       <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4">
           <span class="md-nav__icon md-icon"></span>
-          AppSec Testing
+          AppSec Services
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -789,7 +794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ToolsAndServices/" class="md-nav__link">
+      <a href="../ToolsAndServices/" class="md-nav__link">
         AppSec Tools and Services
       </a>
     </li>
@@ -825,7 +830,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../DAST/">DAST</a>
+          <a href="../DAST/">DAST</a>
           
             <label for="__nav_4_3">
               <span class="md-nav__icon md-icon"></span>
@@ -848,7 +853,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../DAST/DAST%20Tool%20and%20Onboarding%20Approach/" class="md-nav__link">
+      <a href="../DAST/DAST%20Tool%20and%20Onboarding%20Approach/" class="md-nav__link">
         DAST Tool and Onboarding Approach
       </a>
     </li>
@@ -867,16 +872,16 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" checked>
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
       
       
         
@@ -897,7 +902,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../">SAST</a>
+          <a href="../SAST/">SAST</a>
           
             <label for="__nav_4_4">
               <span class="md-nav__icon md-icon"></span>
@@ -905,7 +910,7 @@
           
         </div>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="true">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_4_4">
           <span class="md-nav__icon md-icon"></span>
           SAST
@@ -920,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../SAST%20-%20IDE%20Plugin/" class="md-nav__link">
+      <a href="../SAST/SAST%20-%20IDE%20Plugin/" class="md-nav__link">
         SAST   IDE Plugin
       </a>
     </li>
@@ -934,7 +939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../SAST%20Tool%20and%20CI%20Integration/" class="md-nav__link">
+      <a href="../SAST/SAST%20Tool%20and%20CI%20Integration/" class="md-nav__link">
         SAST Tool and CI Integration
       </a>
     </li>
@@ -946,19 +951,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../SAST/Snyk%20Code%20SAST%20-%20IDE%20Plugin/" class="md-nav__link">
         Snyk Code SAST   IDE Plugin
       </a>
-      
     </li>
   
 
@@ -970,7 +967,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Snyk%20Code%20SAST%20Tool%20and%20CI%20Integration/" class="md-nav__link">
+      <a href="../SAST/Snyk%20Code%20SAST%20Tool%20and%20CI%20Integration/" class="md-nav__link">
         Snyk Code SAST Tool and CI Integration
       </a>
     </li>
@@ -1013,7 +1010,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../Secret%20Scanning/">Secret Scanning</a>
+          <a href="../Secret%20Scanning/">Secret Scanning</a>
           
             <label for="__nav_4_5">
               <span class="md-nav__icon md-icon"></span>
@@ -1036,7 +1033,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Secret%20Scanning/Secret%20Scanning%20Tool%20Integration/" class="md-nav__link">
+      <a href="../Secret%20Scanning/Secret%20Scanning%20Tool%20Integration/" class="md-nav__link">
         Secret Scanning Tool and CI Integration
       </a>
     </li>
@@ -1055,16 +1052,16 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-        
-      
-      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
       
       
         
@@ -1078,8 +1075,8 @@
       
         
         
-        <div class="md-nav__link md-nav__link--index ">
-          <a href="../../Software%20Composition%20Analysis/">Software Composition Analysis</a>
+        <div class="md-nav__link md-nav__link--index md-nav__link--active">
+          <a href="./">Software Composition Analysis</a>
           
             <label for="__nav_4_6">
               <span class="md-nav__icon md-icon"></span>
@@ -1087,7 +1084,7 @@
           
         </div>
       
-      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_4_6">
           <span class="md-nav__icon md-icon"></span>
           Software Composition Analysis
@@ -1102,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../Software%20Composition%20Analysis/SCA%20Tool%20and%20CI%20Integration/" class="md-nav__link">
+      <a href="SCA%20Tool%20and%20CI%20Integration/" class="md-nav__link">
         SCA Tool and CI Integration
       </a>
     </li>
@@ -1155,7 +1152,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../Awareness/">Awareness</a>
+          <a href="../../Awareness/">Awareness</a>
           
             <label for="__nav_5">
               <span class="md-nav__icon md-icon"></span>
@@ -1178,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Awareness/ImmersiveLabs/" class="md-nav__link">
+      <a href="../../Awareness/ImmersiveLabs/" class="md-nav__link">
         ImmersiveLabs
       </a>
     </li>
@@ -1192,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../Awareness/SKF/" class="md-nav__link">
+      <a href="../../Awareness/SKF/" class="md-nav__link">
         Security Knoweldge Framework(SKF)
       </a>
     </li>
@@ -1234,7 +1231,7 @@
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../Contact/">Contact</a>
+          <a href="../../Contact/">Contact</a>
           
         </div>
       
@@ -1270,6 +1267,30 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#challenges-in-security-open-source" class="md-nav__link">
+    Challenges in Security Open source
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-sca-tools-can-help" class="md-nav__link">
+    How SCA Tools can help?
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1284,17 +1305,22 @@
                   
 
 
-  <h1>Snyk Code SAST   IDE Plugin</h1>
-
-<div><p>IDE integrations use Snyk Code’s fast analysis and response, allowing you to spot an issue, understand and learn more about it, and fix it, as you write the code before you check the code in. So you can find possible security flaws in your code as you write it, on a line-by-line basis.</p>
-<p>Install the Snyk IDE plugin right from the marketplace</p>
+<div><h1 id="software-composition-analysis">Software Composition Analysis<a class="headerlink" href="#software-composition-analysis" title="Permanent link">¶</a></h1>
+<p>Developers are adopting more and more open-source code, third-party code and libraries to achieve various tasks in application development process. This may introduce application security vulnerabilities if the latest and non vulnerable versions of the packages are not used. But determining whether the open-source code is vulnerable or not is a cumbersome job. Hence there is a need of Software Composition Analysis (SCA) tool like Snyk to uncover hidden vulnerabilities in the libraries used and their vulnerable direct / transitive dependencies.</p>
+<h2 id="challenges-in-security-open-source">Challenges in Security Open source<a class="headerlink" href="#challenges-in-security-open-source" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="https://docs.snyk.io/integrations/ide-tools/eclipse-plugin">Eclipse Plugin</a></li>
-<li><a href="https://docs.snyk.io/integrations/ide-tools/jetbrains-plugins">Jetbrains Plugin</a></li>
-<li><a href="https://docs.snyk.io/integrations/ide-tools/visual-studio-extension">Visual Studio Extension</a></li>
-<li><a href="https://docs.snyk.io/integrations/ide-tools/visual-studio-code-extension">Visual Studio Code extension</a></li>
+<li>Which libraries are we using, and do they contain any vulnerabilities?</li>
+<li>Does the vulnerable library do anything bad?</li>
+<li>Can I react fast enough to new vulnerabilities?</li>
+<li>What type of licenses are used, and can we use them?</li>
 </ul>
-<p>By fixing issues early, Snyk Security helps you ace security reviews later down the line and avoid time-intensive or costly fixes downstream in a build process.</p></div>
+<p>Simply using open-source libraries is not a security threat to the business. The real problem is not knowing that what you are using contains vulnerabilities, and that they are exploitable in your application.</p>
+<h2 id="how-sca-tools-can-help">How SCA Tools can help?<a class="headerlink" href="#how-sca-tools-can-help" title="Permanent link">¶</a></h2>
+<ul>
+<li>Inventory - SCA tool creates inventory of all open-source components used</li>
+<li>Security Vulnerabilities - SCA tools identifies the known vulnerabilities in the open-source components used</li>
+<li>License Compliance - SCA tools helps in identifying the open-source license violations as per organizations policy</li>
+</ul></div>
 
 
 
@@ -1321,7 +1347,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../SAST%20Tool%20and%20CI%20Integration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: SAST Tool and CI Integration" rel="prev">
+          <a href="../Secret%20Scanning/Secret%20Scanning%20Tool%20Integration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Secret Scanning Tool and CI Integration" rel="prev">
             <div class="md-footer__button md-icon">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
             </div>
@@ -1330,20 +1356,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                SAST Tool and CI Integration
+                Secret Scanning Tool and CI Integration
               </div>
             </div>
           </a>
         
         
           
-          <a href="../Snyk%20Code%20SAST%20Tool%20and%20CI%20Integration/" class="md-footer__link md-footer__link--next" aria-label="Next: Snyk Code SAST Tool and CI Integration" rel="next">
+          <a href="SCA%20Tool%20and%20CI%20Integration/" class="md-footer__link md-footer__link--next" aria-label="Next: SCA Tool and CI Integration" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Snyk Code SAST Tool and CI Integration
+                SCA Tool and CI Integration
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1380,10 +1406,10 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy"], "search": "../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.a51614de.min.js"></script>
+      <script src="../../assets/javascripts/bundle.a51614de.min.js"></script>
       
     
   <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
