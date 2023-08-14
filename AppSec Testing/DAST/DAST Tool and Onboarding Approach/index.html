@@ -896,13 +896,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    Architecture
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1359,13 +1352,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    Architecture
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1423,8 +1409,7 @@ if it’s a webservice  please share the below details</p>
                    entitlementID=$( echo "$scan_details" | jq '.entitlementId')
                    curl -X POST --header 'Content-Type: application/json' --header 'Accept: application/json' --header 'Authorization: Bearer '${tok3n} -d '{"startDate": "2022-0820T05:35:23.645Z", "assessmentTypeId": ${assessmenttypeID}, "entitlementId": ${entitlementID}, "entitlementFrequencyType": "Subscription", "isRemediationScan": false, "isBundledAssessment": false, "parentAssessmentTypeId": 0, "applyPreviousScanSettings": false, "scanMethodType": "IDE", "scanTool": "string", "scanToolVersion": "string"}' 'https://api.emea.fortify.com/api/v3/releases/9516/dynamic-scans/start-scan'
 </code></pre></div>
-<p>Note- DAST integration should be at CD phase.</p>
-<h4 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">¶</a></h4></div>
+<p>Note- DAST integration should be at CD phase.</p></div>
 
 
 

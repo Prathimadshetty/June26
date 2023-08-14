@@ -1201,13 +1201,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    Architecture
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1475,13 +1468,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    Architecture
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1584,10 +1570,9 @@ task: Bash@3
        else
          echo "PASSED"
        fi
-</code></pre></div>
-<p>Sample screenshot of Snyk execution and results:</p>
-<p>IMAGE</p>
-<div class="language-text highlight"><pre><span></span><code>Note: To enforce security gating in block mode please uncomment exit code 1.
+
+
+Note: To enforce security gating in block mode please uncomment exit code 1.
 </code></pre></div>
 <h4 id="github-actions">GitHub Actions<a class="headerlink" href="#github-actions" title="Permanent link">¶</a></h4>
 <p>Step 1: Create Service Account Token as GitHub Secrets in GitHub Settings &gt; Secrets &gt; Repository Secrets.</p>
@@ -1640,8 +1625,6 @@ jobs:
 
 Note: To enforce security gating in block mode please uncomment exit code 1.
 </code></pre></div>
-<p>Sample screenshot of Snyk execution and results:</p>
-<p>IMAGE</p>
 <h4 id="jenkins">Jenkins<a class="headerlink" href="#jenkins" title="Permanent link">¶</a></h4>
 <p>Step 1: Store Service Account token in Azure KeyVault.</p>
 <p>Step 2: Create a service principal and store that as a jenkins secret to retrieve the secret from the azure keyvault</p>
@@ -1696,9 +1679,7 @@ Note: To enforce security gating in block mode please uncomment exit code 1.
 ​
 }
 </code></pre></div>
-<p>​
-Sample screenshot of Snyk execution and results:</p>
-<p>IMAGE</p>
+<p>​</p>
 <h4 id="concourse-ci">Concourse CI<a class="headerlink" href="#concourse-ci" title="Permanent link">¶</a></h4>
 <p>Step 1: GitHub and Snyk details should be updated in the Hashicorp Vault. (Don't hard code username and password values in the pipeline)</p>
 <p>Use below variables to pass secrets in the pipeline.</p>
@@ -1768,9 +1749,7 @@ jobs:
 <li>Application security at scale requires developers to be the first step in the security process. Snyk’s platform is purpose-built to be easily used by developers to build software securely.</li>
 <li>The Snyk Intel vulnerability database is maintained by a dedicated research team that combines public sources, contributions from the developer community and academia, proprietary research and machine learning.</li>
 <li>Snyk will integrated with major repositories like GitHub and major CICD tools like Azure Devops, Jenkins, Concourse, etc...</li>
-</ul>
-<h3 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">¶</a></h3>
-<p>IMAGE</p></div>
+</ul></div>
 
 
 

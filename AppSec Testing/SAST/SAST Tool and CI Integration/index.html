@@ -1014,19 +1014,6 @@
     Product Features
   </a>
   
-    <nav class="md-nav" aria-label="Product Features">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    Architecture
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1431,19 +1418,6 @@
     Product Features
   </a>
   
-    <nav class="md-nav" aria-label="Product Features">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#architecture" class="md-nav__link">
-    Architecture
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
     </ul>
@@ -1549,8 +1523,7 @@ jobs:
 <div class="language-text highlight"><pre><span></span><code>Note: To enforce security gating in block mode please uncomment exit code 1.
 </code></pre></div>
 <p>Sample Output:-</p>
-<p>1) After the scanning is completed, if the code has Critical or High security vulnerabilities, the job status will give an alert because of Security Gating Implementation. Please refer the below screenshot</p>
-<p>IMAGE</p>
+<p>1) After the scanning is completed, if the code has Critical or High security vulnerabilities, the job status will give an alert because of Security Gating Implementation. </p>
 <p>To Resolve or Validate security vulnerabilities:-</p>
 <p>To validate or Resolve any security vulnerabilities after scanning the code in any CI/CD pipeline. Open that Application in Fortify on demand portal and check the last build run details. It will explain about each vulnerabilities clearly.</p>
 <h4 id="github-actions">Github Actions<a class="headerlink" href="#github-actions" title="Permanent link">¶</a></h4>
@@ -1663,8 +1636,7 @@ jobs:
 <p>3) we need to use the custom code to fail the pipelines while using FodUpload jar to scan the code. Include lines from "55 to 63" to fail the CI/CD pipeline.</p>
 <p>4) $? is a special variable in shell that reads the exit status of the last command executed.</p>
 <p>Sample output:</p>
-<p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities Please refer the below screenshot</p>
-<p>IMAGE</p>
+<p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities.</p>
 <h4 id="concourse-ci">Concourse CI:<a class="headerlink" href="#concourse-ci" title="Permanent link">¶</a></h4>
 <p>Step 1: Store GitHub Username, Personal Access Token  and API_KEY and API_SECRET in Hashicorp Vault.</p>
 <p>Step 2: Create a Pipeline.yml with following code</p>
@@ -1719,8 +1691,7 @@ All the variable fields are configured in Hashicorp vault for reusability and ma
 GitHub and Fortify on demand details to be updated in the Hashicorp Vault. (Don't hard code username and password values in the pipeline)
 For steps to create a secret keys in HC Vault, refer here.</p>
 <p>Sample Output:-</p>
-<p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities Please refer the below screenshot</p>
-<p>IMAGE</p>
+<p>1) After the scanning is completed, if the code has security vulnerabilities. The job status will fail because of security vulnerabilities. </p>
 <h3 id="product-features">Product Features<a class="headerlink" href="#product-features" title="Permanent link">¶</a></h3>
 <ul>
 <li>Fortify on Demand gives you the tools to create, supplement, and expand a Software Security Assurance program with no infrastructure investments or security staff required.</li>
@@ -1728,9 +1699,7 @@ For steps to create a secret keys in HC Vault, refer here.</p>
 <li>Fortify on Demand assessments include a review by  security experts. In combination with innovative Fortify Scan Analytics machine learning platform, it removes false positives and ensures overall quality so your development teams can maximize their remediation efforts early in the software lifecycle.</li>
 <li>Fortify on Demand gives developers the tools to write secure code and optimize application security at every step of the software development cycle.</li>
 <li>Fortify on Demand is a comprehensive platform designed with helpdesk ticketing available 24x7 through a dedicated support team.x-www-</li>
-</ul>
-<h4 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">¶</a></h4>
-<p>IMAGE</p></div>
+</ul></div>
 
 
 
