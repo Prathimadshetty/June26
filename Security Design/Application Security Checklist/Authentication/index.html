@@ -1,0 +1,1879 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../Architecture/">
+      
+      
+        <link rel="next" href="../Business%20Logic/">
+      
+      <link rel="icon" href="../../../Logo/M&S-Logo.svg">
+      <meta name="generator" content="mkdocs-1.4.3, mkdocs-material-9.1.16">
+    
+    
+      
+        <title>Authentication - Cloud and Application Security</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.26e3688c.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ecc896b0.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Cloud and Application Security" class="md-header__button md-logo" aria-label="Cloud and Application Security" data-md-component="logo">
+      
+  <img src="../../../Logo/MS-Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cloud and Application Security
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Authentication
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+            
+              <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+            
+            
+            
+            <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="green" data-md-color-accent="green"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+            
+              <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+              </label>
+            
+          
+        </form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../SSDLC/" class="md-tabs__link">
+        SSDLC
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Security Design
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../AppSec%20Services/" class="md-tabs__link">
+        AppSec Services
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Awareness/" class="md-tabs__link">
+        Awareness
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Contact/" class="md-tabs__link">
+        Contact
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Cloud and Application Security" class="md-nav__button md-logo" aria-label="Cloud and Application Security" data-md-component="logo">
+      
+  <img src="../../../Logo/MS-Logo.png" alt="logo">
+
+    </a>
+    Cloud and Application Security
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../SSDLC/">SSDLC</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          SSDLC
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Security Design</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Security Design
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Application Security Checklist</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Application Security Checklist
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Access%20Control/" class="md-nav__link">
+        Access Control
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Architecture/" class="md-nav__link">
+        Architecture
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Authentication
+      </a>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Business%20Logic/" class="md-nav__link">
+        Business Logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Communication%20Security/" class="md-nav__link">
+        Communication Security
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Configuration%20and%20Operations/" class="md-nav__link">
+        Configuration and Operations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Cryptography/" class="md-nav__link">
+        Cryptography
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Data%20Protection/" class="md-nav__link">
+        Data Protection
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Error%20Handling%20and%20Logging/" class="md-nav__link">
+        Error Handling and Logging
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Files%20and%20Resources/" class="md-nav__link">
+        Files and Resources
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Input%20and%20Output%20Validation/" class="md-nav__link">
+        Input and Output Validation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Malicious%20Code/" class="md-nav__link">
+        Malicious Code
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Session%20Management/" class="md-nav__link">
+        Session Management
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Web%20Service/" class="md-nav__link">
+        Web Service
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../Mobile%20App%20Security%20Checklist/">Mobile App Security Checklist</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Mobile App Security Checklist
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Mobile%20App%20Security%20Checklist/MobileSecurity/" class="md-nav__link">
+        MobileSecurity
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../Threat%20Modeling/">Threat Modeling</a>
+          
+            <label for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          Threat Modeling
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../Threat%20Modeling/TM/" class="md-nav__link">
+        TM
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../AppSec%20Services/">AppSec Services</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          AppSec Services
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AppSec%20Services/ToolsAndServices/" class="md-nav__link">
+        AppSec Tools and Services
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_3" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../AppSec%20Services/DAST/">DAST</a>
+          
+            <label for="__nav_4_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          DAST
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AppSec%20Services/DAST/DAST%20Tool%20and%20Onboarding%20Approach/" class="md-nav__link">
+        DAST Tool and Onboarding Approach
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_4" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../AppSec%20Services/PRScanBot/">PRScanBot</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          PRScanBot
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../AppSec%20Services/SAST/">SAST</a>
+          
+            <label for="__nav_4_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_5">
+          <span class="md-nav__icon md-icon"></span>
+          SAST
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AppSec%20Services/SAST/SAST%20-%20IDE%20Plugin/" class="md-nav__link">
+        SAST   IDE Plugin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AppSec%20Services/SAST/SAST%20Tool%20and%20CI%20Integration/" class="md-nav__link">
+        SAST Tool and CI Integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AppSec%20Services/SAST/Snyk%20Code%20SAST%20-%20IDE%20Plugin/" class="md-nav__link">
+        Snyk Code SAST   IDE Plugin
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AppSec%20Services/SAST/Snyk%20Code%20SAST%20Tool%20and%20CI%20Integration/" class="md-nav__link">
+        Snyk Code SAST Tool and CI Integration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../AppSec%20Services/Secret%20Scanning/">Secret Scanning</a>
+          
+            <label for="__nav_4_6">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_6">
+          <span class="md-nav__icon md-icon"></span>
+          Secret Scanning
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AppSec%20Services/Secret%20Scanning/Secret%20Scanning%20Tool%20Integration/" class="md-nav__link">
+        Secret Scanning Tool and CI Integration
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AppSec%20Services/Secret%20Scanning/Trufflehog_PreCommitHook/" class="md-nav__link">
+        TruffleHog Pre-Commit Hook
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../AppSec%20Services/Software%20Composition%20Analysis/">Software Composition Analysis</a>
+          
+            <label for="__nav_4_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_4_7">
+          <span class="md-nav__icon md-icon"></span>
+          Software Composition Analysis
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AppSec%20Services/Software%20Composition%20Analysis/PNPM%20Dependency%20Scan%20Guide/" class="md-nav__link">
+        PNPM Dependency Scan Guide(SCA)
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AppSec%20Services/Software%20Composition%20Analysis/SCA%20Tool%20and%20CI%20Integration/" class="md-nav__link">
+        SCA Tool and CI Integration
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Awareness/">Awareness</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Awareness
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Awareness/ImmersiveLabs/" class="md-nav__link">
+        ImmersiveLabs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Awareness/SKF/" class="md-nav__link">
+        Security Knoweldge Framework(SKF)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+        
+      
+      <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../Contact/">Contact</a>
+          
+        </div>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Contact
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Authentication</h1>
+
+<div><p>...</p>
+<table>
+<thead>
+<tr>
+<th align="right">#</th>
+<th align="left">Security Requirement</th>
+<th align="left">CWE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">1</td>
+<td align="left">Verify that user set passwords are at least 12 characters in length (after multiple spaces are combined).</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">2</td>
+<td align="left">Verify that passwords 64 characters or longer are permitted but may be no longer than 128 characters.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="left">Verify that password truncation is not performed. However, consecutive multiple spaces may be replaced by a single space.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">4</td>
+<td align="left">Verify that any printable Unicode character, including language neutral characters such as spaces and Emojis are permitted in passwords.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="left">Verify users can change their password.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/620.html">CWE-620</a></td>
+</tr>
+<tr>
+<td align="right">6</td>
+<td align="left">Verify that password change functionality requires the user's current and new password.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/620.html">CWE-620</a></td>
+</tr>
+<tr>
+<td align="right">7</td>
+<td align="left">Verify that passwords submitted during account registration, login, and password change are checked against a set of breached passwords either locally (such as the top 1,000 or 10,000 most common passwords which match the system's password policy) or using an external API. If using an API a zero knowledge proof or other mechanism should be used to ensure that the plain text password is not sent or used in verifying the breach status of the password. If the password is breached, the application must require the user to set a new non-breached password.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">8</td>
+<td align="left">Verify that a password strength meter is provided to help users set a stronger password.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">9</td>
+<td align="left">Verify that there are no password composition rules limiting the type of characters permitted. There should be no requirement for upper or lower case or numbers or special characters.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">10</td>
+<td align="left">Verify that there are no periodic credential rotation or password history requirements.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/263.html">CWE-263</a></td>
+</tr>
+<tr>
+<td align="right">11</td>
+<td align="left">Verify that "paste" functionality, browser password helpers, and external password managers are permitted.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">12</td>
+<td align="left">Verify that the user can choose to either temporarily view the entire masked password, or temporarily view the last typed character of the password on platforms that do not have this as built-in functionality.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/521.html">CWE-521</a></td>
+</tr>
+<tr>
+<td align="right">13</td>
+<td align="left">Verify that anti-automation controls are effective at mitigating breached credential testing, brute force, and account lockout attacks. Such controls include blocking the most common breached passwords, soft lockouts, rate limiting, CAPTCHA, ever increasing delays between attempts, IP address restrictions, or risk-based restrictions such as location, first login on a device, recent attempts to unlock the account, or similar. Verify that no more than 100 failed attempts per hour is possible on a single account.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/307.html">CWE-307</a></td>
+</tr>
+<tr>
+<td align="right">14</td>
+<td align="left">Verify that the use of weak authenticators (such as SMS and email) is limited to secondary verification and transaction approval and not as a replacement for more secure authentication methods. Verify that stronger methods are offered before weak methods, users are aware of the risks, or that proper measures are in place to limit the risks of account compromise.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/304.html">CWE-304</a></td>
+</tr>
+<tr>
+<td align="right">15</td>
+<td align="left">Verify that secure notifications are sent to users after updates to authentication details, such as credential resets, email or address changes, logging in from unknown or risky locations. The use of push notifications - rather than SMS or email - is preferred, but in the absence of push notifications, SMS or email is acceptable as long as no sensitive information is disclosed in the notification.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/620.html">CWE-620</a></td>
+</tr>
+<tr>
+<td align="right">16</td>
+<td align="left">Verify impersonation resistance against phishing, such as the use of multi-factor authentication, cryptographic devices with intent (such as connected keys with a push to authenticate), or at higher AAL levels, client-side certificates.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">17</td>
+<td align="left">Verify that where a Credential Service Provider (CSP) and the application verifying authentication are separated, mutually authenticated TLS is in place between the two endpoints.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/319.html">CWE-319</a></td>
+</tr>
+<tr>
+<td align="right">18</td>
+<td align="left">Verify replay resistance through the mandated use of One-time Passwords (OTP) devices, cryptographic authenticators, or lookup codes.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">19</td>
+<td align="left">Verify intent to authenticate by requiring the entry of an OTP token or user-initiated action such as a button press on a FIDO hardware key.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td align="left">Verify system generated initial passwords or activation codes SHOULD be securely randomly generated, SHOULD be at least 6 characters long, and MAY contain letters and numbers, and expire after a short period of time. These initial secrets must not be permitted to become the long term password.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/330.html">CWE-330</a></td>
+</tr>
+<tr>
+<td align="right">21</td>
+<td align="left">Verify that enrollment and use of subscriber-provided authentication devices are supported, such as a U2F or FIDO tokens.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">22</td>
+<td align="left">Verify that renewal instructions are sent with sufficient time to renew time bound authenticators.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">23</td>
+<td align="left">Verify that passwords are stored in a form that is resistant to offline attacks. Passwords SHALL be salted and hashed using an approved one-way key derivation or password hashing function. Key derivation and password hashing functions take a password, a salt, and a cost factor as inputs when generating a password hash.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></td>
+</tr>
+<tr>
+<td align="right">24</td>
+<td align="left">Verify that the salt is at least 32 bits in length and be chosen arbitrarily to minimize salt value collisions among stored hashes. For each credential, a unique salt value and the resulting hash SHALL be stored.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></td>
+</tr>
+<tr>
+<td align="right">25</td>
+<td align="left">Verify that if PBKDF2 is used, the iteration count SHOULD be as large as verification server performance will allow, typically at least 100,000 iterations.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></td>
+</tr>
+<tr>
+<td align="right">26</td>
+<td align="left">Verify that if bcrypt is used, the work factor SHOULD be as large as verification server performance will allow, typically at least 13.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></td>
+</tr>
+<tr>
+<td align="right">27</td>
+<td align="left">Verify that an additional iteration of a key derivation function is performed, using a salt value that is secret and known only to the verifier. Generate the salt value using an approved random bit generator [SP 800-90Ar1] and provide at least the minimum security strength specified in the latest revision of SP 800-131A. The secret salt value SHALL be stored separately from the hashed passwords (e.g., in a specialized device like a hardware security module).</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/916.html">CWE-916</a></td>
+</tr>
+<tr>
+<td align="right">28</td>
+<td align="left">Verify that a system generated initial activation or recovery secret is not sent in clear text to the user.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/640.html">CWE-640</a></td>
+</tr>
+<tr>
+<td align="right">29</td>
+<td align="left">Verify password hints or knowledge-based authentication (so-called "secret questions") are not present.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/640.html">CWE-640</a></td>
+</tr>
+<tr>
+<td align="right">30</td>
+<td align="left">Verify password credential recovery does not reveal the current password in any way.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/640.html">CWE-640</a></td>
+</tr>
+<tr>
+<td align="right">31</td>
+<td align="left">Verify shared or default accounts are not present (e.g. "root", "admin", or "sa").</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/16.html">CWE-16</a></td>
+</tr>
+<tr>
+<td align="right">32</td>
+<td align="left">Verify that if an authentication factor is changed or replaced, that the user is notified of this event.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/304.html">CWE-304</a></td>
+</tr>
+<tr>
+<td align="right">33</td>
+<td align="left">Verify forgotten password, and other recovery paths use a secure recovery mechanism, such as time-based OTP (TOTP) or other soft token, mobile push, or another offline recovery mechanism.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/640.html">CWE-640</a></td>
+</tr>
+<tr>
+<td align="right">34</td>
+<td align="left">Verify that if OTP or multi-factor authentication factors are lost, that evidence of identity proofing is performed at the same level as during enrollment.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">35</td>
+<td align="left">Verify that lookup secrets can be used only once.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">36</td>
+<td align="left">Verify that lookup secrets have sufficient randomness (112 bits of entropy), or if less than 112 bits of entropy, salted with a unique and random 32-bit salt and hashed with an approved one-way hash.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/330.html">CWE-330</a></td>
+</tr>
+<tr>
+<td align="right">37</td>
+<td align="left">Verify that lookup secrets are resistant to offline attacks, such as predictable values.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/310.html">CWE-310</a></td>
+</tr>
+<tr>
+<td align="right">38</td>
+<td align="left">Verify that clear text out of band (NIST "restricted") authenticators, such as SMS or PSTN, are not offered by default, and stronger alternatives such as push notifications are offered first.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">39</td>
+<td align="left">Verify that the out of band verifier expires out of band authentication requests, codes, or tokens after 10 minutes.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td align="left">Verify that the out of band verifier authentication requests, codes, or tokens are only usable once, and only for the original authentication request.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">41</td>
+<td align="left">Verify that the out of band authenticator and verifier communicates over a secure independent channel.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/523.html">CWE-523</a></td>
+</tr>
+<tr>
+<td align="right">42</td>
+<td align="left">Verify that the out of band verifier retains only a hashed version of the authentication code.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/256.html">CWE-256</a></td>
+</tr>
+<tr>
+<td align="right">43</td>
+<td align="left">Verify that the initial authentication code is generated by a secure random number generator, containing at least 20 bits of entropy (typically a six digital random number is sufficient).</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/310.html">CWE-310</a></td>
+</tr>
+<tr>
+<td align="right">44</td>
+<td align="left">Verify that time-based OTPs have a defined lifetime before expiring.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/613.html">CWE-613</a></td>
+</tr>
+<tr>
+<td align="right">45</td>
+<td align="left">Verify that symmetric keys used to verify submitted OTPs are highly protected, such as by using a hardware security module or secure operating system based key storage.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/320.html">CWE-320</a></td>
+</tr>
+<tr>
+<td align="right">46</td>
+<td align="left">Verify that approved cryptographic algorithms are used in the generation, seeding, and verification of OTPs.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/326.html">CWE-326</a></td>
+</tr>
+<tr>
+<td align="right">47</td>
+<td align="left">Verify that time-based OTP can be used only once within the validity period.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">48</td>
+<td align="left">Verify that if a time-based multi-factor OTP token is re-used during the validity period, it is logged and rejected with secure notifications being sent to the holder of the device.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">49</td>
+<td align="left">Verify physical single-factor OTP generator can be revoked in case of theft or other loss. Ensure that revocation is immediately effective across logged in sessions, regardless of location.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/613.html">CWE-613</a></td>
+</tr>
+<tr>
+<td align="right">50</td>
+<td align="left">Verify that biometric authenticators are limited to use only as secondary factors in conjunction with either something you have and something you know.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/308.html">CWE-308</a></td>
+</tr>
+<tr>
+<td align="right">51</td>
+<td align="left">Verify that cryptographic keys used in verification are stored securely and protected against disclosure, such as using a Trusted Platform Module (TPM) or Hardware Security Module (HSM), or an OS service that can use this secure storage.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/320.html">CWE-320</a></td>
+</tr>
+<tr>
+<td align="right">52</td>
+<td align="left">Verify that the challenge nonce is at least 64 bits in length, and statistically unique or unique over the lifetime of the cryptographic device.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/330.html">CWE-330</a></td>
+</tr>
+<tr>
+<td align="right">53</td>
+<td align="left">Verify that approved cryptographic algorithms are used in the generation, seeding, and verification.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/327.html">CWE-327</a></td>
+</tr>
+<tr>
+<td align="right">54</td>
+<td align="left">Verify that intra-service secrets do not rely on unchanging credentials such as passwords, API keys or shared accounts with privileged access.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/287.html">CWE-287</a></td>
+</tr>
+<tr>
+<td align="right">55</td>
+<td align="left">Verify that if passwords are required for service authentication, the service account used is not a default credential. (e.g. root/root or admin/admin are default in some services during installation).</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/255.html">CWE-255</a></td>
+</tr>
+<tr>
+<td align="right">56</td>
+<td align="left">Verify that passwords are stored with sufficient protection to prevent offline recovery attacks, including local system access.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/522.html">CWE-522</a></td>
+</tr>
+<tr>
+<td align="right">57</td>
+<td align="left">Verify passwords, integrations with databases and third-party systems, seeds and internal secrets, and API keys are managed securely and not included in the source code or stored within source code repositories. Such storage SHOULD resist offline attacks. The use of a secure software key store (L1), hardware TPM, or an HSM (L3) is recommended for password storage.</td>
+<td align="left"><a href="https://cwe.mitre.org/data/definitions/798.html">CWE-798</a></td>
+</tr>
+</tbody>
+</table>
+<p>...</p></div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../Architecture/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Architecture" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Architecture
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../Business%20Logic/" class="md-footer__link md-footer__link--next" aria-label="Next: Business Logic" rel="next">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Business Logic
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; M&S AppSec
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.expand", "navigation.top", "navigation.footer", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.208ed371.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.a51614de.min.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
